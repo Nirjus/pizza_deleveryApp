@@ -1,0 +1,64 @@
+.pizzaContainer{
+min-height: 100vh;
+width: 100%;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+a{
+    text-decoration: none;
+}
+.pizzaCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+     background-color: bisque;
+     height: auto;
+     width: 250px;
+     margin: 1rem;
+     padding: 1rem;
+     border-radius: 5px;
+     gap: 4px;
+     cursor: pointer;
+    img{
+        height: 200px;
+        width: 200px;
+        object-fit: cover;
+    }
+    &:hover{
+       animation: scaleUp 0.4s linear; 
+    }
+    h3,h4{
+      color: orangered;
+    }
+    p{
+        color: black;
+    }
+    button{
+        background-color: orangered;
+        color: white;
+        border: none;
+        padding: 1rem;
+        font-weight: 600;
+        border-radius: 10px;
+        &:hover{
+            cursor: pointer;
+            background-color: rgb(255, 30, 0);
+        }
+    }
+}
+}
+
+@keyframes scaleUp {
+    0%{
+        transform: scale(1);
+        background-color: bisque;
+    }
+    50%{
+        transform: scale(1.05);
+        background-color: rgb(253, 217, 172);
+    }
+    100%{
+        transform: scale(1);
+        background-color: bisque;
+    }
+}

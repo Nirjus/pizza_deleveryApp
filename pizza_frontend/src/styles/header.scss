@@ -1,0 +1,113 @@
+.headerContainer{
+    background-color: #232323;
+    display: flex;
+    width: 100%;
+    height: 4rem;
+     flex-direction: row;
+     justify-content: flex-start;
+    .links{
+        display: flex;
+        width: 50%;
+        margin: auto;
+
+        p{
+            margin:0.8rem;
+            padding: 2px;
+            a{
+                text-decoration: none;
+                color: #fff;
+                &:hover{
+                    color: aqua;
+                }
+            }
+        }
+    }
+    .logo{
+        display: flex;
+        flex-direction: row;
+        width: 50%;
+        justify-content: flex-end;
+        margin: 5px;
+        img{
+            height: 3.8rem;
+            width: 3.8rem;
+            object-fit: contain;
+            margin-right:6px;
+        }
+        .logoHeading{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            h3{
+                color:aliceblue;
+                font-weight:800 ;
+                letter-spacing: 4px;
+                 margin: 5px;
+                 text-transform:uppercase;
+                 text-decoration: underline;
+            }
+            p{
+                color: #fff;
+                line-height: 2px;
+            }
+        }
+       
+    }
+}
+
+@media screen and (max-width:800px) {
+    .headerContainer{
+        .hambargerIcon{
+            color: #fff;
+            margin: 15px;
+            cursor: pointer;
+        }
+        .links{
+           display: none;
+        }
+        .logo{
+            width: 100%;
+        }
+    }
+}
+@media screen and (min-width:800px) {
+    .headerContainer{
+        .hambargerIcon{
+            display: none;
+        }
+        .hambarger{
+            display: none;
+        }
+    }
+}
+
+.hambarger{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    background-color: #fd6d30;
+    border-radius: 10px;
+    align-items: center;
+    height: 70%;
+    padding: 1rem;
+    z-index: 999;
+    p{
+     font-size: large;
+     border: 1px solid white;
+     border-radius:5px;
+     padding: 1rem;
+     margin: auto;
+     a{
+        text-decoration: none;
+        color: #fff;
+    }
+     &:hover{
+         background-color: #fb2b2b;
+         color: #ea5312;
+     }
+    }
+}

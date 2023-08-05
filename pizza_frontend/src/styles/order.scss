@@ -1,0 +1,88 @@
+.orderContainer{
+    width: 100%;
+    min-height: 100vh;
+    .orders{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+       
+        .orderCard{
+            width: fit-content;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            gap: 3rem;
+            padding: 2rem;
+            border-bottom: 2px solid rgb(255, 55, 0);
+            margin: 5px;
+            img{
+                height: 300px;
+                width: 300px;
+                object-fit: cover;
+            }
+            .orderInfo{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background-color: rgb(247, 159, 127);
+                border-radius: 20px;
+                gap: 10px;
+                padding: 1rem;
+                h2{
+                    font-size:20px;
+                    color: #fff;
+                }
+                a{
+                    button{
+                        margin-top: 5px;
+                        border: none;
+                        padding: 1rem;
+                        border-radius: 15px;
+                        background-color: orangered;
+                        color: aliceblue;
+                        font-weight: 800;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+    .totalOrder{
+        width: 90%;
+        height: 10vh;
+        background-color: rgb(245, 202, 186);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        color: rgb(255, 98, 0);
+       margin: auto;
+       border-radius: 5px;
+         margin-bottom: 1rem;
+         border: 2px solid orangered;
+       button{
+        margin-top: 5px;
+        border: none;
+        padding: 1rem;
+        border-radius: 15px;
+        background-color: orangered;
+        color: aliceblue;
+        font-weight: 800;
+        cursor: pointer;
+       }
+    }
+}
+
+@media screen and (max-width:800px) {
+    .orderContainer{
+        .orders{
+            .orderCard{
+                display: flex;
+                flex-direction: column;
+               gap: 1rem;
+            }
+        }
+    }
+}

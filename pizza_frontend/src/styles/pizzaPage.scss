@@ -1,0 +1,95 @@
+.singlePizza{
+    min-height: 100vh;
+    width: 100%;
+    padding: 3rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: rgb(250, 201, 183);
+    .PizzaImage{
+        width: 40%;
+        padding: 1rem;
+        img{
+            height: 500px;
+            width: 100%;
+            object-fit: contain;
+            transition: all 0.3s ease-in-out;
+            &:hover{
+             transform: rotate(90deg);   
+           }
+        }
+    }
+    .singlePizzaInfo{
+      width: 40%;
+      h1{
+        color: orangered;
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: 2.4rem;
+      margin: 1rem;
+    }
+    h3{
+        color: orangered;
+        font-size: larger;
+        padding: 1rem 0;
+    }
+    p{
+       word-spacing: 3px;
+       padding: 2rem 0
+    }
+    button{
+        margin: 0.2rem 1rem;
+        border: none;
+        padding: 0.7rem;
+        border-radius: 5px;
+        background-color: rgb(246, 124, 80);
+        color: aliceblue;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+        &:hover{
+            background-color: orangered;
+        }
+     &:nth-child(4){
+        background-color: aliceblue;
+        color: rgb(246, 124, 80);
+        &:hover{
+            background-color: orangered;
+            color: aliceblue;
+        }
+     }
+    }
+      .pizzaorder{
+        display: flex;
+        border: 1px solid orangered;
+         justify-content: center;
+         align-items: center;
+         gap: 6px;
+         svg{
+            background-color: rgb(255, 255, 255);
+            border-radius: 50%;
+         }
+         p{
+            margin: 0 1rem;
+            font-size: 25px;
+         }
+      }
+    }
+
+}
+
+@media screen and (max-width:800px) {
+    .singlePizza{
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        .PizzaImage{
+            width: 100%;
+        }
+        .singlePizzaInfo{
+            width: 100%;
+            
+        }
+    }
+}
