@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom'
 import img from "../assets/images/headerPizza.png"
 import { RxCross1 } from "react-icons/rx"
 import { GiHamburgerMenu } from "react-icons/gi"
+import { useSelector } from 'react-redux'
 const Header = () => {
 
    const [open, setOpen] = useState(false)
+   
+   const {cartItems} = useSelector(state => state.cart);
 
   return (
     <div className='headerContainer'>
@@ -15,7 +18,7 @@ const Header = () => {
     <RxCross1 size={30} onClick={() => setOpen(false)}/>
      <p> <Link to={"/"} onClick={() => setOpen(false)}>Home</Link></p>
      <p> <Link to={"/pizza-room"} onClick={() => setOpen(false)}>Pizzas</Link></p>
-     <p> <Link to={"/orders"} onClick={() => setOpen(false)}>Orders</Link></p>
+     <p> <Link to={"/orders"} onClick={() => setOpen(false)}>Orders</Link>{cartItems.length > 0 ? (<span>{cartItems.length}</span>):("")}</p>
       <p> <Link to={"/category"} onClick={() => setOpen(false)}>Category</Link></p>
      </div>
         ) : <GiHamburgerMenu className='hambargerIcon' size={30} onClick={() => setOpen(true)} />
@@ -23,7 +26,7 @@ const Header = () => {
     <div className="links">
     <p> <Link to={"/"}>Home</Link></p>
      <p> <Link to={"/pizza-room"}>Pizzas</Link></p>
-     <p> <Link to={"/orders"}>Orders</Link></p>
+     <p> <Link to={"/orders"}>Orders</Link> {cartItems.length > 0 ? (<span>{cartItems.length}</span>):("")}</p>
       <p> <Link to={"/category"}>Category</Link></p>
     </div>
     <div className="logo">

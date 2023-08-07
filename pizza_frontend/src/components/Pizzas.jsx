@@ -2,10 +2,17 @@ import React from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { item } from "../data/data";
+import { useDispatch } from "react-redux";
 
 const Pizzas = () => {
 
-  const addToCart = () => {
+  const dispatch = useDispatch();
+
+  const addToCart = (options) => {
+     dispatch({type:"addToCart", payload:options})
+     dispatch({
+      type:"calculatePrice",
+    })
     toast.success("Item added to cart");
   }
    
@@ -16,10 +23,11 @@ const Pizzas = () => {
         <PizzaCard 
         key={i.id}
         name={i.name} 
-        imgSrc={i.imgsrc} 
+        imgSrc={i.imgSrc} 
         price={i.price} 
         stock={i.stock}
         id={i.id}
+        descripto={i.descriptio}
         handler={addToCart}
         />
       ))
@@ -28,19 +36,21 @@ const Pizzas = () => {
   );
 };
 
-const PizzaCard = ({ name, imgSrc, price,stock,id,handler }) => {
+const PizzaCard = ({ name, imgSrc, price,stock,id,handler,descripto }) => {
 
 return (
- <Link to={`/pizza/${id}`}>
+ 
   <div className="pizzaCard" >
+    <Link to={`/pizza/${id}`}>
     <img src={imgSrc} alt={name} />
     <h3>{name}</h3>
     <p>{stock}</p>
     <h4>₹{price}</h4>
-    <button onClick={() => handler()}>Order Now</button>
+    </Link>
+    <button onClick={() => handler({imgSrc,name,qty:1,stock,price,id,descripto })}>Order Now</button>
     
   </div>
- </Link>
+
 )
 }
 

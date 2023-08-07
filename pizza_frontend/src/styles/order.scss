@@ -1,42 +1,73 @@
 .orderContainer{
     width: 100%;
     min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     .orders{
         display: flex;
         flex-direction: column;
         align-items: center;
-       
+        width: 70%;
+        height:100vh;
+        overflow: auto;
+        &::-webkit-scrollbar{
+            display: none;
+        }
         .orderCard{
             width: fit-content;
             margin: auto;
             display: flex;
             flex-wrap: wrap;
             flex-direction: row;
+            align-items:center;
             gap: 3rem;
             padding: 2rem;
             border-bottom: 2px solid rgb(255, 55, 0);
             margin: 5px;
             img{
                 height: 300px;
-                width: 300px;
-                object-fit: cover;
+                width: auto;
+                object-fit: contain;
             }
             .orderInfo{
+                height:fit-content;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
                 background-color: rgb(247, 159, 127);
                 border-radius: 20px;
-                gap: 10px;
+                gap: 1rem;
                 padding: 1rem;
                 h2{
                     font-size:20px;
                     color: #fff;
                 }
+                p{
+                    display: flex;
+                    flex-direction: row;
+                div{
+                    display: flex;
+                    flex-direction: row;
+                    gap: 20px;
+                    background-color: #3c3b3b;
+                    border-radius:50px;
+                    font-weight: 600;
+                    color: #fff;
+                    font-size: 17px;
+                    svg{
+                        cursor: pointer;
+                        margin-top: 0;
+                        margin-right: 0;
+                        background-color:rgb(83, 172, 23);
+                        border-radius: 50%;
+                        color: #fff;
+                     }
+                }
+                }
                 a{
                     button{
-                        margin-top: 5px;
                         border: none;
                         padding: 1rem;
                         border-radius: 15px;
@@ -46,24 +77,32 @@
                         cursor: pointer;
                     }
                 }
+                svg{
+                    margin-top: -46px;
+                    margin-right: -250px;
+                    cursor: pointer;
+                    &:hover{
+                        color: orangered;
+                    }
+                }
             }
         }
     }
     .totalOrder{
-        width: 90%;
-        height: 10vh;
+        width: 30%;
+        height: auto;
+        gap: 3rem;
         background-color: rgb(245, 202, 186);
         display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
         color: rgb(255, 98, 0);
-       margin: auto;
-       border-radius: 5px;
-         margin-bottom: 1rem;
+       border-radius: 200px 0 0 200px;
          border: 2px solid orangered;
+         margin: 2px 0px 2px 2px;
        button{
-        margin-top: 5px;
+        margin: 2px;
         border: none;
         padding: 1rem;
         border-radius: 15px;
@@ -77,12 +116,44 @@
 
 @media screen and (max-width:800px) {
     .orderContainer{
+        display: flex;
+        flex-direction: column;
         .orders{
+            width: 100%;
             .orderCard{
                 display: flex;
                 flex-direction: column;
                gap: 1rem;
             }
+        }
+        .totalOrder{
+            width: 100%;
+            border-radius: 200px 200px 0 0;
+            gap: 1.5rem;
+            padding: 2rem;
+         margin: auto;
+        }
+    }
+}
+
+@media screen and (max-width:500px) {
+    .orderContainer{
+        display: flex;
+        flex-direction: column;
+    
+        .orders{
+            width: 100%;
+            .orderCard{
+                display: flex;
+                flex-direction: column;
+               gap: 1rem;
+            }
+        }
+        .totalOrder{
+            width: 100%;
+            border-radius: 50px 50px 0 0;
+            gap: 0;
+            padding: 2rem;
         }
     }
 }

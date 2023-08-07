@@ -20,6 +20,17 @@
                     color: aqua;
                 }
             }
+            span{
+                color: #000;
+                border-radius: 50%;
+                 background-color: #fff;
+                height: 20px;
+                width: 20px;
+                display: grid;
+                transform: translate(240%,-30%);
+                text-align: center;
+                font-size: 12px;
+            }
         }
     }
     .logo{
@@ -105,9 +116,21 @@
         text-decoration: none;
         color: #fff;
     }
+    span{
+        color: #000;
+        border-radius: 5px;
+         background-color: #fff;
+        height: 30px;
+        width: 30px;
+        display: grid;
+        transform: translate(150%,30%);
+        text-align: center;
+        font-size: 16px;
+    }
      &:hover{
          background-color: #fb2b2b;
          color: #ea5312;
      }
+     
     }
 }
