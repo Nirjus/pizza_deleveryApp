@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { item } from "../data/data";
 import { useDispatch } from "react-redux";
+import { CiPizza } from "react-icons/ci";
 
 const Pizzas = () => {
 
@@ -17,7 +18,12 @@ const Pizzas = () => {
   }
    
   return (
+    <>
+   <div className="menue">
+   <h1><CiPizza color="red"/> Menu</h1>
+   </div>
     <div className="pizzaContainer">
+       
       {
       item.map((i) => (
         <PizzaCard 
@@ -33,10 +39,11 @@ const Pizzas = () => {
       ))
       }
     </div>
+    </>
   );
 };
 
-const PizzaCard = ({ name, imgSrc, price,stock,id,handler,descripto }) => {
+export const PizzaCard = ({ name, imgSrc, price,stock,id,handler,descripto }) => {
 
 return (
  

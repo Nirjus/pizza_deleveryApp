@@ -33,23 +33,29 @@
             }
         }
     }
+    a{
+        display: flex;
+        align-items: center;
+    }
     .logo{
         display: flex;
         flex-direction: row;
         width: 50%;
         justify-content: flex-end;
+        align-items: center;
         margin: 5px;
+        gap: 6px;
         img{
             height: 3.8rem;
             width: 3.8rem;
             object-fit: contain;
-            margin-right:6px;
         }
         .logoHeading{
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            margin-top: -15px;
             h3{
                 color:aliceblue;
                 font-weight:800 ;

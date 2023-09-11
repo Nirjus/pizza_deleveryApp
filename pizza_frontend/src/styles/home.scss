@@ -1,4 +1,315 @@
+@import "./pizzas.scss";
 .homeContainer{
     min-height: 100vh;
     width: 100%;
+    background-image: linear-gradient(230deg, rgb(243, 132, 132)50%,white 50%);
+    .homediv{
+        height:100vh;
+        width: 100%;
+        .login{
+            width: 100%;
+            height: 60px;
+            background-color: rgb(39, 11, 8);
+            display: flex;
+            justify-content:space-around;
+            align-items: center;
+           
+            h3{
+                color: #fff;
+                font-weight: 300;
+                font-family:sans-serif;
+                width: 70%;
+                span{
+                    color: red;
+                }
+            }
+             img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+             }
+         }
+        .carousolDiv{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            height: 70vh;
+            .headingBanner{
+                width: 40%;
+                margin: auto;
+                text-align: center;
+               
+                h1{
+                    font-size:75px;
+                    font-weight: 900;
+                    letter-spacing: 2px;
+                    line-height: 100px;
+                    background-image: linear-gradient(60deg, rgb(254, 188, 66)40%, rgb(255, 0, 0)60%);
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    color: transparent;
+                }
+            }
+            .carousel{
+                width: 50%;
+                margin:auto;
+                margin-top: 2rem;
+                div{
+                    img{
+                        height: 100%;
+                        width: 100%;
+                        object-fit: contain;
+                    }
+                }
+            }
+        }
+    }
+    .offerSection{
+        height: 80vh;
+        // background: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .offers{
+            height: 78vh;
+            width:95%;
+           border: 1px solid rgb(126, 126, 126);
+           background-color: rgb(28, 27, 27);
+           background-image: linear-gradient(90deg, black 50%, white);
+           border-radius: 25px;
+           display: flex;
+           flex-direction: row;
+           justify-content: space-evenly;
+           align-items: center;
+           .offerInfo{
+            width: 45%;
+            color: #fff;
+            h1,h2{
+                font-size: 35px;
+            }
+            h1,h2,h4,p,button{
+               margin: 2rem;
+            }
+            h2{
+                color: rgb(255, 238, 0);
+                letter-spacing: 5px;
+            }
+            button{
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                width: 100px;
+                height: 40px;
+                background-color: orangered;
+                font-size: 15px
+            }
+           }
+        .offerImage{
+            width: 45%;
+            img{
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
+            }
+        }
+        }
+    }
+    .featuredPizza{
+       h1{
+        text-align: center;
+        font-size: 35px;
+        color: rgba(41, 40, 40, 0.74);
+       }
+      
+        .pizzaContainer{
+            min-height: 75vh;
+            align-items: center;
+         flex-wrap: nowrap;
+         overflow: auto;
+         &::-webkit-scrollbar{
+            display: none;
+         }
+               .pizzaCard{
+                height: auto;
+                min-width: 250px;
+                padding: 2rem 0;
+              
+                button{
+                    display: none;
+                }
+               }
+        }
+    }
 }
+
+@media screen and (max-width:800px) {
+     .homeContainer{
+    background-image: linear-gradient(-105deg, rgb(243, 132, 132)50%,white 50%);
+
+        .homediv{
+            height: 100vh;
+            width: 100%;
+           
+            .carousolDiv{
+                display: flex;
+                flex-direction: column;
+                .headingBanner{
+                    width: 100%;
+                    margin: auto;
+                    text-align: center;
+                    min-height: 200px;
+                   display: flex;
+                   flex-direction: column;
+                   align-items: center;
+                   justify-content: center;
+                   gap:12px;
+                   
+                   h1{
+                    font-size:48px;
+                    font-weight: 800;
+                    letter-spacing: 1px;
+                    line-height: 60px;
+                    background-image: linear-gradient(60deg, rgb(0, 60, 255)30%, rgb(234, 238, 10)70%);
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    color: transparent;
+                }
+                }
+                .carousel{
+                    width: 100%;
+                    margin: auto;
+                }
+            }
+        }
+
+        .offerSection{
+            height:100vh;
+            // background: transparent;
+            .offers{
+                height:95%;
+                width:95%;
+               background-image: linear-gradient(145deg, black 50%, white);
+               border-radius: 25px;
+               display: flex;
+               flex-direction: column;
+               justify-content: space-evenly;
+               align-items: center;
+               .offerInfo{
+                width: 100%;
+                color: #fff;
+                h1,h2{
+                    font-size: 35px;
+                }
+                h1,h2,h4,p,button{
+                   margin: 1rem;
+                }
+                h2{
+                    color: rgb(255, 238, 0);
+                }
+                button{
+                    color: #fff;
+                    border: none;
+                    border-radius: 5px;
+                    width: 100px;
+                    height: 40px;
+                    background-color: orangered;
+                    font-size: 15px
+                }
+               }
+            .offerImage{
+                width: 100%;
+                img{
+                    height:300px;
+                    width: 100%;
+                    object-fit: contain;
+                }
+            }
+            }
+        }
+        .featuredPizza{
+            h1{
+             text-align: center;
+             font-size: 35px;
+             color: rgba(41, 40, 40, 0.74);
+            }
+           
+             .pizzaContainer{
+                 min-height: 75vh;
+                 align-items: center;
+                 justify-content: flex-start;
+              flex-wrap: nowrap;
+              overflow: auto;
+              &::-webkit-scrollbar{
+                 display: none;
+              }
+                    .pizzaCard{
+                     height: max-content;
+                     padding: 2rem 0;
+                   
+                     button{
+                         display: none;
+                     }
+                    }
+             }
+         }
+     }
+}
+
+@media screen and (max-width:500px) {
+    .homeContainer{
+       .homediv{
+           height: auto;
+           width: 100%;
+        background-image: linear-gradient(240deg, rgb(243, 132, 132)50%,white 50%);
+            .login{
+                h3{
+                    span{
+                        display: flex;
+                    }
+                }
+            }
+           .carousolDiv{
+               display: flex;
+               flex-direction: column;
+               .headingBanner{
+                min-height: 100px;
+                gap: 10px;
+                  h1{
+                   font-size:40px;
+                   font-weight:800;
+                   letter-spacing: 1px;
+                   background-image: linear-gradient(60deg, rgb(168, 83, 247)40%, rgb(234, 255, 0)60%);
+                   -webkit-background-clip: text;
+                   background-clip: text;
+                   color: transparent;
+               }
+               }
+               .carousel{
+                   width: 100%;
+                   margin: auto;
+               }
+           }
+       }
+       .offerSection{
+        height: max-content;
+        background: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .offers{
+            width: fit-content;
+            padding: 1rem;
+            width:100%;
+           border: 1px solid black;
+           background-color: rgb(28, 27, 27);
+           border-radius: 25px;
+           .offerImage{
+            img{
+                height: 250px;
+            }
+           }
+        }
+    }
+    }
+    }

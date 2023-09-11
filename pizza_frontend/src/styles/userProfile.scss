@@ -1,0 +1,36 @@
+.profielContainer{
+    min-height: 100vh;
+    width: 100%;
+    .profile{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        aside{
+            
+           padding: 2rem;
+           background-color: aquamarine;
+           margin: auto;
+           font-size: 20px;
+           
+           svg{
+            font-size: 25px;
+            margin-bottom:-5px;
+            margin-right: 2px;
+           }
+           p{
+            margin: 2rem 0;
+         
+           }
+        }
+        main{
+           width: 70%;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           padding: 4rem;
+           background-color: burlywood;
+        }
+    }
+}

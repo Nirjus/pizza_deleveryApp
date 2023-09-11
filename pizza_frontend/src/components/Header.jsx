@@ -29,13 +29,15 @@ const Header = () => {
      <p> <Link to={"/orders"}>Orders</Link> {cartItems.length > 0 ? (<span>{cartItems.length}</span>):("")}</p>
       <p> <Link to={"/category"}>Category</Link></p>
     </div>
+   
     <div className="logo">
-      <img src={img} alt="Pizza Png" />
+    <Link to={"/"}><img src={img} alt="Pizza Png" /> </Link>
       <div className="logoHeading">
       <h3>Pizza Corner</h3>
       <p>Online Pizza app</p>
       </div>
     </div>
+    
     </div>
   )
 }

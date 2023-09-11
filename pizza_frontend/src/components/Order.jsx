@@ -1,11 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AiFillDelete, AiOutlineMinusCircle, AiOutlinePlusCircle, AiOutlineShopping } from "react-icons/ai";
+import {
+  AiFillDelete,
+  AiOutlineMinusCircle,
+  AiOutlinePlusCircle,
+  AiOutlineShopping,
+} from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 const Order = () => {
-
   const dispatch = useDispatch();
-  const { cartItems,tax,totalPrice,totalItems  } = useSelector((state) => state.cart);
+  const { cartItems, tax, totalPrice, totalItems } = useSelector(
+    (state) => state.cart
+  );
 
   const decrement = (id) => {
     dispatch({
@@ -13,8 +19,8 @@ const Order = () => {
       payload: id,
     });
     dispatch({
-      type:"calculatePrice",
-    })
+      type: "calculatePrice",
+    });
   };
   const increment = (id) => {
     dispatch({
@@ -22,18 +28,18 @@ const Order = () => {
       payload: { id },
     });
     dispatch({
-      type:"calculatePrice",
-    })
+      type: "calculatePrice",
+    });
   };
-  const deleteHandler= (id) => {
+  const deleteHandler = (id) => {
     dispatch({
       type: "deleteFromCart",
-      payload: id
+      payload: id,
     });
     dispatch({
-      type:"calculatePrice",
-    })
-  }
+      type: "calculatePrice",
+    });
+  };
 
   return (
     <div className="orderContainer">
@@ -44,14 +50,14 @@ const Order = () => {
         {cartItems.length > 0 ? (
           cartItems.map((i) => (
             <OrderCard
-            key={i.id}
+              key={i.id}
               name={i.name}
               price={i.price}
               items={i.qty}
               imgSrc={i.imgSrc}
               id={i.id}
               increment={increment}
-              decrement={decrement} 
+              decrement={decrement}
               deleteHandler={deleteHandler}
             />
           ))
@@ -71,19 +77,28 @@ const Order = () => {
   );
 };
 
-
-const OrderCard = ({ name, items, price, imgSrc,id,increment,decrement, deleteHandler }) => (
+const OrderCard = ({
+  name,
+  items,
+  price,
+  imgSrc,
+  id,
+  increment,
+  decrement,
+  deleteHandler,
+}) => (
   <div className="orderCard">
     <img src={imgSrc} alt="orderd_Pizza" />
     <div className="orderInfo">
       <h2>Name of Pizza :{name}</h2>
-      <p>Total Items :<div><AiOutlinePlusCircle
-            onClick={() => increment(id)}
-            size={30}
-          />{items}  <AiOutlineMinusCircle
-          onClick={() => decrement(id)}
-          size={30}
-        /></div></p>
+      <p>
+        Total Items :
+        <div>
+          <AiOutlinePlusCircle onClick={() => increment(id)} size={30} />
+          {items}{" "}
+          <AiOutlineMinusCircle onClick={() => decrement(id)} size={30} />
+        </div>
+      </p>
       <h4>
         Price: ₹{price}*{items}
       </h4>
