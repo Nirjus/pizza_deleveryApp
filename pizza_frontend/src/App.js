@@ -17,6 +17,9 @@ import ActivationPage from "./pages/ActivationPage";
 import Registration from "./components/UserRegistration/Registration";
 import UpdateProfile from "./pages/UpdateProfile";
 import UserProtectedRoute from "./protectedRoutes/UserProtectedRoute";
+import UpdatePasswordPage from "./pages/UpdatePasswordPage";
+import ForgetPassword from "./pages/ForgetPassword";
+import ResetPassword from "./pages/ResetPassword";
 // stling files
 import "./styles/App.scss";
 import "./styles/header.scss";
@@ -25,7 +28,7 @@ import "./styles/footer.scss";
 import "./styles/pizzas.scss";
 import "./styles/order.scss";
 import "./styles/category.scss";
-import UpdatePasswordPage from "./pages/UpdatePasswordPage";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +47,8 @@ function App() {
           <Route path="/category" element={<Category />} />
           <Route path="/pizza/:id" element={<PizzaPage />} />
           <Route path="/logIn" element={<Login />} />
+          <Route path="/forget-password" element={<ForgetPassword />} />
+          <Route path="/api/user/reset-password/:token" element={<ResetPassword />} />
           <Route path="/register" element={<Registration />} />
           <Route
             path="/api/user/activate/:token"
@@ -73,6 +78,10 @@ function App() {
           <UpdatePasswordPage />
           </UserProtectedRoute>
           } />
+
+          {/* Admin Routes */}
+
+          
         </Routes>
         <Footer />
         <ToastContainer position={"bottom-right"} theme="dark" />

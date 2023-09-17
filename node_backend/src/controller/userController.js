@@ -361,7 +361,7 @@ const handleForgetPassword = async (req, res, next) => {
     
         return successResponse(res, {
           statusCode: 200,
-          message: `please go to your ${email} for activate account`,
+          message: `please go to your ${email} for Reset your password`,
           payload: token,
         });
 
