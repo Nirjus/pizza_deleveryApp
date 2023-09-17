@@ -9,38 +9,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 const Order = () => {
   const dispatch = useDispatch();
-  const { cartItems, tax, totalPrice, totalItems } = useSelector(
-    (state) => state.cart
-  );
-
-  const decrement = (id) => {
-    dispatch({
-      type: "decrement",
-      payload: id,
-    });
-    dispatch({
-      type: "calculatePrice",
-    });
-  };
-  const increment = (id) => {
-    dispatch({
-      type: "addToCart",
-      payload: { id },
-    });
-    dispatch({
-      type: "calculatePrice",
-    });
-  };
-  const deleteHandler = (id) => {
-    dispatch({
-      type: "deleteFromCart",
-      payload: id,
-    });
-    dispatch({
-      type: "calculatePrice",
-    });
-  };
-
+    const cartItems = [1,2,3,4,5];
   return (
     <div className="orderContainer">
       <div className="orders">
@@ -56,9 +25,7 @@ const Order = () => {
               items={i.qty}
               imgSrc={i.imgSrc}
               id={i.id}
-              increment={increment}
-              decrement={decrement}
-              deleteHandler={deleteHandler}
+             
             />
           ))
         ) : (
@@ -66,11 +33,11 @@ const Order = () => {
         )}
       </div>
       <div className="totalOrder">
-        <h2>Total number of Pizzas: {totalItems}</h2>
-        <h2>Tax: {tax}</h2>
-        <h2>Total price: {totalPrice}</h2>
+        <h2>Total number of Pizzas: {120}</h2>
+        <h2>Tax: {20}</h2>
+        <h2>Total price: {120}</h2>
         <Link to={"/checkout"}>
-          <button>Checkout(TOTAL)</button>
+          <button>Checkout(1520)</button>
         </Link>
       </div>
     </div>
@@ -83,9 +50,7 @@ const OrderCard = ({
   price,
   imgSrc,
   id,
-  increment,
-  decrement,
-  deleteHandler,
+ 
 }) => (
   <div className="orderCard">
     <img src={imgSrc} alt="orderd_Pizza" />
@@ -94,9 +59,9 @@ const OrderCard = ({
       <p>
         Total Items :
         <div>
-          <AiOutlinePlusCircle onClick={() => increment(id)} size={30} />
+          <AiOutlinePlusCircle  size={30} />
           {items}{" "}
-          <AiOutlineMinusCircle onClick={() => decrement(id)} size={30} />
+          <AiOutlineMinusCircle  size={30} />
         </div>
       </p>
       <h4>
@@ -105,7 +70,7 @@ const OrderCard = ({
       <Link to={"/checkout"}>
         <button>Checkout</button>
       </Link>
-      <AiFillDelete size={30} onClick={() => deleteHandler(id)} />
+      <AiFillDelete size={30} />
     </div>
   </div>
 );

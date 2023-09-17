@@ -54,7 +54,7 @@ return (
     <p>{stock}</p>
     <h4>₹{price}</h4>
     </Link>
-    <button onClick={() => handler({imgSrc,name,qty:1,stock,price,id,descripto })}>Order Now</button>
+    <button>Order Now</button>
     
   </div>
 

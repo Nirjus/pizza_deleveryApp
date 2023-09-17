@@ -6,30 +6,7 @@
     .homediv{
         height:100vh;
         width: 100%;
-        .login{
-            width: 100%;
-            height: 60px;
-            background-color: rgb(39, 11, 8);
-            display: flex;
-            justify-content:space-around;
-            align-items: center;
-           
-            h3{
-                color: #fff;
-                font-weight: 300;
-                font-family:sans-serif;
-                width: 70%;
-                span{
-                    color: red;
-                }
-            }
-             img{
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-             }
-         }
+      
         .carousolDiv{
             display: flex;
             flex-direction: row;
@@ -45,7 +22,7 @@
                     font-weight: 900;
                     letter-spacing: 2px;
                     line-height: 100px;
-                    background-image: linear-gradient(60deg, rgb(254, 188, 66)40%, rgb(255, 0, 0)60%);
+                    background-image: linear-gradient(60deg, rgb(0, 60, 255)30%, rgb(234, 238, 10)70%);
                     -webkit-background-clip: text;
                     background-clip: text;
                     color: transparent;
@@ -150,7 +127,6 @@
         .homediv{
             height: 100vh;
             width: 100%;
-           
             .carousolDiv{
                 display: flex;
                 flex-direction: column;

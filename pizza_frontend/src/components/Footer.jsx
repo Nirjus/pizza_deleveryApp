@@ -3,11 +3,11 @@ import { AiFillBook, AiFillFacebook, AiFillInstagram, AiFillTwitterSquare, AiOut
 const Footer = () => {
   return (
     <div className='footerContainer'>
-       <div className="followSpace">
-        <h1>Follow for more Amazing Updates</h1>
+       <div className=" flex flex-col justify-center w-[30%] max-800px:w-full gap-8 items-center text-white">
+        <h1 className=' '>Follow for more Amazing Updates</h1>
            <div className="social">
            <p>Follow Us on.</p>
-            <div className="socialIcons">
+            <div className=" flex flex-row gap-4 ">
             <a href={"https://facebook.com"} target='blank'><AiFillFacebook size={25}/></a>
            <a href={"https://instagram.com"} target='blank'><AiFillInstagram size={25}/></a>
          <a href={"https://facebook.com"} target='blank'><AiFillTwitterSquare size={25}/></a>

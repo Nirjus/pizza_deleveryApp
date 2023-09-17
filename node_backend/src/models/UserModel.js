@@ -30,7 +30,8 @@ const userSchema = new mongoose.Schema(
       set: (v) => bcryptJS.hashSync(v, bcryptJS.genSaltSync(10)),
     },
     image: {
-      type: String,
+    public_id: String,
+    url: String,
     
     },
     address: {

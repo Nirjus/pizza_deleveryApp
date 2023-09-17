@@ -1,29 +1,11 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { cartReducer } from "./reducers";
+import {configureStore} from "@reduxjs/toolkit"
+import { userReducer } from "./Reducer/user";
 
-const storedCartState = localStorage.getItem("myCartState");
-const initialCartState = storedCartState ? 
-JSON.parse(storedCartState) : {
-  cartItems:[],
-  tax:0,
-  subTotal:0,
-  totalPrice:0,
-  totalItems:0,
-}
 
-const store = configureStore({
-  reducer: {
-      cart: cartReducer,
-  },
-   preloadedState:{
-    cart: initialCartState,
-   }
-});
-
-store.subscribe(() => {
-  const state = store.getState();
-  // save cart state to local storage
-  localStorage.setItem("myCartState", JSON.stringify(state.cart));
+const Store = configureStore({
+  reducer:{
+    user: userReducer,
+  }
 })
 
-export default store;
+export default Store;

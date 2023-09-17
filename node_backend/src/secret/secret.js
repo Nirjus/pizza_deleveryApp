@@ -24,6 +24,12 @@ const smtpPassword = process.env.SMTP_PASSWORD || "";
 
 const frontendUrl = process.env.FRONTEND_URL;
 
+const cloudinaryApiKey = process.env.CLOUDINARY_API_KEY;
+
+const cloudinaryApiSecret = process.env.CLOUDINARY_API_SECRET;
+
+const cloudinaryName = process.env.CLOUDINARY_CLOUD_NAME;
+
  
 module.exports = {
 
@@ -37,5 +43,8 @@ module.exports = {
     jwtAccessKey,
     jwtResetPAsswordKey,
     jwtRefreshKey,
+    cloudinaryApiKey,
+    cloudinaryApiSecret,
+    cloudinaryName,
 
 }

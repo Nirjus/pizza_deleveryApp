@@ -31,10 +31,10 @@ const loginController = async (req, res, next) => {
         throw new Error("You are Banned for this site, contact to authority");
        }
        //   create a token and store it 
-       const accessToken = createJWTToken("5m",{user},jwtAccessKey);
+       const accessToken = createJWTToken("7d",{user},jwtAccessKey);
        // save it as a cookie
        res.cookie("access_token",accessToken,{
-        maxAge: 5*60*1000,
+        maxAge: 7*24*60*60*1000, // 7day
         httpOnly: true,
         secure: true,
         sameSite: "none",

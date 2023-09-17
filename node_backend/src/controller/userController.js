@@ -3,6 +3,7 @@ const JWT_token = require("jsonwebtoken");
 const User = require("../models/UserModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const cloudinary = require("cloudinary");
 const { successResponse } = require("./responseController");
 const { findItemById } = require("../services/findItemById");
 const {deleteImg} = require("../helper/deleteImage");
@@ -57,7 +58,8 @@ const getAllUser = async (req, res, next) => {
 
 const getUserById = async (req, res, next) => {
   try {
-    const id = req.params.id;
+    
+    const id = req.user._id;
     
     const options = { password: 0 };
 
@@ -82,7 +84,7 @@ const deleteUserById = async (req, res, next) => {
 
     const user = await findItemById(id, User, options);
       
-    await deleteImg(user.image);
+    await cloudinary.v2.uploader.destroy(user.image.public_id);
 
     await User.findByIdAndDelete({ _id: id, isAdmin: false });
 
@@ -97,7 +99,7 @@ const deleteUserById = async (req, res, next) => {
 
 const processRegister = async (req, res, next) => {
   try {
-    const { name, email, password, phone, address } = req.body;
+    const { name, email, password, phone, address,image } = req.body;
 
     const userExists = await User.exists({ email: email });
 
@@ -105,12 +107,20 @@ const processRegister = async (req, res, next) => {
       throw createError(409, "User already exists, please signIn");
     }
     
-    const imagFile = req.file.path;
+    const myCloud = await cloudinary.v2.uploader.upload(image,{
+      folder: "pizzaApp",
+    })  
     
     // jwt token
     const token = createJWTToken(
       "10m",
-      { name, email, password, phone, address, image: imagFile },
+      { name, email, password, phone, 
+        address, 
+      image:{
+          public_id: myCloud.public_id,
+          url: myCloud.secure_url,
+      } 
+    },
       jwtActivationKey
     );
 
@@ -130,10 +140,10 @@ const processRegister = async (req, res, next) => {
    await sendMail(emailData);
 
     return successResponse(res, {
-      statusCode: 200,
+      statusCode: 201,
       message: `please go to your ${email} for activate account`,
       payload: {
-        token,imagFile
+        token
       },
     });
   } catch (error) {
@@ -182,32 +192,45 @@ const processVerify = async (req, res, next) => {
 
 const updateUserById = async (req, res, next) => {
   try {
-    const id = req.params.id;
+    const id = req.user._id;
     const options = { password: 0 };
 
     const user = await findItemById(id, User, options);
-    const oldImage = user.image;
-    await deleteImg(oldImage);
-
+   
     const updatateOptions = {
       new: true, runValidators: true, context: "query"
     }
-    
-    let updates = {}
-       for(let key in req.body){
-         if(["phone", "password", "address", "name"].includes(key)){
-          updates[key] = req.body[key]
-         }
-         else if(["email"].includes(key)){
-           throw  new Error("Email can not be updated");
-         }
-       }
-
-       const image = req.file;
+    let updates = {};
+    const {name,  password, phone, address, image} = req.body;
+     
+      if(name){
+        updates.name = name;
+      }
+      if(password){
+        updates.password = password;
+      }
+      if(phone){
+        updates.phone = phone;
+      }
+      if(address){
+        updates.address = address;
+      }
+      if(req.body.email){
+        throw  new Error("Email can not be updated");
+      }
        if(image){
-          updates.image = image.path;
+        await cloudinary.v2.uploader.destroy(user.image.public_id);
+
+        const myCloud = await cloudinary.v2.uploader.upload(image,{
+          folder: "pizzaApp",
+         })
+
+          updates.image = {
+            public_id: myCloud.public_id,
+            url: myCloud.secure_url,
+          }
        }
-      
+       console.log(updates);
    const updateUser =  await User.findByIdAndUpdate(id, updates,updatateOptions ).select("-password");
 
     return successResponse(res, {
@@ -274,7 +297,7 @@ const updateUserBanById = async (req, res, next) => {
 
 const handleUpdatePassword = async (req, res, next) => {
   try {
-     const id = req.params.id;
+     const id = req.user._id;
      
      const user = await findItemById(id,User);
     

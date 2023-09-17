@@ -1,21 +1,22 @@
 import React from 'react'
 import UserProfileSidebar from '../components/userprofileSideBar/UserProfileSidebar'
-import ProfileSettings from '../components/userProfile/ProfileSettings'
+import UpdatePasswordComponent from '../components/UpdateProfileComponent/UpdatePasswordComponent.jsx'
 import "../styles/fullUserProfile.scss"
-const UserProfile = () => {
+const UpdatePasswordPage = () => {
   return (
     <div className='profielContainer'>
         <div className="profile">
             <div className='profileSidebar'>
-            <UserProfileSidebar active={1} />
+            <UserProfileSidebar active={6} />
             </div>
            
            <div className='profileSettings'>
-            <ProfileSettings />
+           <UpdatePasswordComponent />
            </div>
         </div>
     </div>
   )
 }
 
-export default UserProfile
+
+export default UpdatePasswordPage

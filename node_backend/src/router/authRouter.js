@@ -6,7 +6,7 @@ const { validateUserLogin, userValidator } = require("../middleware/auth");
 const authRoute = express.Router();
 
 authRoute.post("/login",validateUserLogin, userValidator,isLogOut,loginController);
-authRoute.post("/logout",isLogIn, logoutController);
+authRoute.get("/logout",isLogIn, logoutController);
 authRoute.get("/refresh-token", handleRefreshToken);
 authRoute.get("/protected", handleProtectedRoute);
 

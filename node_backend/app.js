@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+const cors = require("cors");
 const createError = require("http-errors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -19,6 +20,11 @@ app.use(rateLimiter.rateLimit({
     windowMs: 1*60*1000,
     max: 10,
     message: "Too many request",
+}))
+
+app.use(cors({
+    origin: "http://localhost:3000",
+    credentials: true,
 }))
 
 app.get("/",(req, res) => {

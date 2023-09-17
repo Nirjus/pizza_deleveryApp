@@ -1,19 +1,19 @@
 import React, { useEffect, useRef } from "react";
 import { Carousel } from "react-responsive-carousel";
-import { Link } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { AiFillPhone } from "react-icons/ai";
-import Typed from "typed.js";
+
 import img1 from "../assets/images/caurosul Images/cooker.png";
 import img2 from "../assets/images/caurosul Images/eating pizzas.png";
 import img3 from "../assets/images/caurosul Images/pizza delevery man.png";
-import img4 from "../assets/images/pizza combos.png"
-import ProfilePic from "../assets/images/userImage/5556468.png";
+import img4 from "../assets/images/pizza combos.png";
+import Typed from "typed.js";
 import { PizzaCard } from "./Pizzas";
 import { item } from "../data/data";
+
+
 const Home = () => {
   const el = useRef(null);
-
+ 
   useEffect(() => {
     const typed = new Typed(el.current, {
       strings: ["Hungers...", ""],
@@ -35,14 +35,6 @@ const Home = () => {
     <div className="homeContainer">
       <div className="homediv">
        
-      <div className="login">
-    <h3>
-      Contact delevery <AiFillPhone /> <span>(757-858-528)</span>
-    </h3>
-    <Link to={"/user-profile/:id"}>
-      <img src={ProfilePic} alt={"Profile pic"} />
-    </Link>
-  </div>
 
         <div className="carousolDiv">
           <div className="headingBanner">
@@ -74,13 +66,16 @@ const Home = () => {
             </div>
           </Carousel>
         </div>
-
       </div>
       <div className="offerSection">
-      <div className="offers">
+        <div className="offers">
           <div className="offerInfo">
             <h1>Crunchy and Crispy Pizza combo</h1>
-            <h4>pizza, dish of Italian origin consisting of a flattened disk of bread dough topped with some combination of olive oil, oregano, tomato,</h4>
+            <h4>
+              pizza, dish of Italian origin consisting of a flattened disk of
+              bread dough topped with some combination of olive oil, oregano,
+              tomato,
+            </h4>
 
             <h2>15:15:45</h2>
 
@@ -89,27 +84,24 @@ const Home = () => {
           <div className="offerImage">
             <img src={img4} alt={"pizzaCombo"} />
           </div>
+        </div>
       </div>
-     </div>
-     <div className="featuredPizza">
-     <h1>All time favorite Pizzas</h1>
-     <div className="pizzaContainer">
-      {
-      item.slice(0,5).map((i) => (
-        <PizzaCard 
-        key={i.id}
-        name={i.name} 
-        imgSrc={i.imgSrc} 
-        price={i.price} 
-        stock={i.stock}
-        id={i.id}
-        descripto={i.descriptio}
-       
-        />
-      ))
-      }
-    </div>
-     </div>
+      <div className="featuredPizza">
+        <h1>All time favorite Pizzas</h1>
+        <div className="pizzaContainer">
+          {item.slice(0, 5).map((i) => (
+            <PizzaCard
+              key={i.id}
+              name={i.name}
+              imgSrc={i.imgSrc}
+              price={i.price}
+              stock={i.stock}
+              id={i.id}
+              descripto={i.descriptio}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
