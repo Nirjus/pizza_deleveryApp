@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {RxAvatar} from "react-icons/rx";
 import {toast} from "react-toastify"
 import { useDispatch, useSelector } from 'react-redux';

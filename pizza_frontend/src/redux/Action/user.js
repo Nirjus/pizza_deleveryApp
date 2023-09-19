@@ -19,6 +19,25 @@ export const loadUser = () => async (dispatch) => {
         })
     }
 }
+export const getAllUser = () => async (dispatch) => {
+    try {
+        dispatch({
+            type: "getAllUserRequest",
+        })
+        const {data} = await axios.get(`${server}/api/user`,{
+            withCredentials: true,
+        })
+        dispatch({
+            type: "getAllUserSuccess",
+            payload: data.payload.users,
+        })
+    } catch (error) {
+        dispatch({
+            type: "getAllUserFail",
+            payload: error.response.data.message,
+        })
+    }
+}
 
 export const createUser = (name, email, password, phone, address, image) => async (dispatch) => {
     try {

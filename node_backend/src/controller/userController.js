@@ -106,7 +106,6 @@ const processRegister = async (req, res, next) => {
     if (userExists) {
       throw createError(409, "User already exists, please signIn");
     }
-    
     const myCloud = await cloudinary.v2.uploader.upload(image,{
       folder: "pizzaApp",
     })  
@@ -194,9 +193,9 @@ const updateUserById = async (req, res, next) => {
   try {
     const id = req.user._id;
     const options = { password: 0 };
-
+    
     const user = await findItemById(id, User, options);
-   
+    
     const updatateOptions = {
       new: true, runValidators: true, context: "query"
     }
@@ -256,12 +255,12 @@ const updateUserUnBanById = async (req, res, next) => {
    const updateUser =  await User.findByIdAndUpdate(id, {isBanned:false},updatateOptions ).select("-password");
 
          if(!updateUser){
-          throw createError(404, "User was not banned, error occured");
+          throw createError(404, "User was not Unbanned, error occured");
          }
        
     return successResponse(res, {
       statusCode: 200,
-      message: "User is Banned successfully",
+      message: "User is UnBanned successfully",
       payload: {updateUser},
     });
   } catch (error) {
@@ -339,7 +338,7 @@ const handleForgetPassword = async (req, res, next) => {
         }
 
         const token = createJWTToken(
-          "10m",
+          "1m",
           { email },
           jwtResetPAsswordKey,
         );

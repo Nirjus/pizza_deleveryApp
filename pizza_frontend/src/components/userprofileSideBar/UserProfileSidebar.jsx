@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import {
   AiOutlineCheckCircle,
-  AiOutlineDashboard,
   AiOutlineHome,
   AiOutlineLogout,
   AiOutlineOrderedList,
@@ -13,6 +12,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loadUser, logoutUser } from "../../redux/Action/user";
 import { toast } from "react-toastify";
+import { FaUserShield } from "react-icons/fa";
 
 const UserProfileSidebar = ({active}) => {
   const dispatch = useDispatch();
@@ -48,7 +48,7 @@ const UserProfileSidebar = ({active}) => {
         user?.isAdmin === true ? (
           <Link to={"/admin-dashboard"}>
           <p>
-             <AiOutlineDashboard size={30} color={active === 2 ? "red" : "black"} />
+             <FaUserShield size={30} color={active === 2 ? "red" : "black"} />
            <span style={{color:`${active === 2 ? "red" : "black"}`}}> Admin Dashboard</span>
            </p>
           </Link>

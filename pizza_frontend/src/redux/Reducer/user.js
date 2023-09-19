@@ -89,6 +89,23 @@ export const userReducer = createReducer(initialState,
          state.error = action.payload;
        },
 
+       getAllUserRequest:(state) => {
+        state.loading = true;
+       },
+       getAllUserSuccess: (state, action) => {
+         state.loading = false;
+         state.isAuthenticate = true;
+         state.isAdmin = true;
+         state.users = action.payload;
+       },
+       getAllUserFail: (state,action) => {
+        state.loading = false;
+         state.isAuthenticate = false;
+         state.isAdmin = false;
+         state.error = action.payload;
+       },
+       
+
        CLEAR_ERROR:(state) => {
          state.error = null;
        },

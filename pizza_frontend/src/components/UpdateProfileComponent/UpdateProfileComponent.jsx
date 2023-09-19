@@ -27,10 +27,10 @@ const UpdateProfileComponent = () => {
            }
         }
     }
-    const submitHandler = async (e) => {
+    const submitHandler = (e) => {
       e.preventDefault();
-     await dispatch(updateUser(name,password,phone,address,image))
-      dispatch(loadUser());
+      dispatch(updateUser(name,password,phone,address,image))
+     
     }
  
     useEffect(() => {

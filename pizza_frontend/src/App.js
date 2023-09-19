@@ -16,10 +16,15 @@ import UserProfile from "./pages/UserProfile";
 import ActivationPage from "./pages/ActivationPage";
 import Registration from "./components/UserRegistration/Registration";
 import UpdateProfile from "./pages/UpdateProfile";
-import UserProtectedRoute from "./protectedRoutes/UserProtectedRoute";
+import { IsAdmin, IsLogOut, UserProtectedRoute} from "./protectedRoutes/UserProtectedRoute";
 import UpdatePasswordPage from "./pages/UpdatePasswordPage";
 import ForgetPassword from "./pages/ForgetPassword";
 import ResetPassword from "./pages/ResetPassword";
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminAllUsers from "./pages/AdminAllUsers";
+import AdminBanUsers from "./pages/AdminBanUsers";
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-alpine.css';
 // stling files
 import "./styles/App.scss";
 import "./styles/header.scss";
@@ -28,6 +33,9 @@ import "./styles/footer.scss";
 import "./styles/pizzas.scss";
 import "./styles/order.scss";
 import "./styles/category.scss";
+
+
+
 
 
 function App() {
@@ -46,13 +54,29 @@ function App() {
           <Route path="/pizza-room" element={<Pizzas />} />
           <Route path="/category" element={<Category />} />
           <Route path="/pizza/:id" element={<PizzaPage />} />
-          <Route path="/logIn" element={<Login />} />
-          <Route path="/forget-password" element={<ForgetPassword />} />
-          <Route path="/api/user/reset-password/:token" element={<ResetPassword />} />
-          <Route path="/register" element={<Registration />} />
+          <Route path="/logIn" element={
+          <IsLogOut>
+          <Login />
+          </IsLogOut>
+          } />
+          <Route path="/forget-password" element={
+          <IsLogOut>
+          <ForgetPassword />
+          </IsLogOut>
+          } />
+          <Route path="/api/user/reset-password/:token" element={
+          <ResetPassword />
+          } />
+          <Route path="/register" element={
+         <IsLogOut>
+          <Registration />
+         </IsLogOut>
+          } />
           <Route
             path="/api/user/activate/:token"
-            element={<ActivationPage />}
+            element={
+            <ActivationPage />
+            }
           />
           <Route
             path="/user-profile"
@@ -81,7 +105,21 @@ function App() {
 
           {/* Admin Routes */}
 
-          
+          <Route path="/admin-dashboard" element={
+            <IsAdmin>
+            <AdminDashboard />
+            </IsAdmin>
+          } />
+          <Route path="/admin-users" element={
+            <IsAdmin>
+            <AdminAllUsers />
+            </IsAdmin>
+          } />
+           <Route path="/admin-banusers" element={
+            <IsAdmin>
+            <AdminBanUsers />
+            </IsAdmin>
+          } />
         </Routes>
         <Footer />
         <ToastContainer position={"bottom-right"} theme="dark" />
