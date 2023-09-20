@@ -55,7 +55,7 @@ const UpdateProfileComponent = () => {
          
               {
                image ? (
-                  <img src={image} alt='avatar' className=' w-[200px] h-[200px] object-contain rounded-full border-[3px] border-[#ff22e9]' />
+                  <img src={image} alt='avatar' className=' w-[200px] h-[200px] object-contain  rounded-full border-[3px] border-[#ff22e9]' />
                )   :   (
                   <img src={user?.image?.url} alt='avatar' className=' w-[200px] h-[200px] object-contain rounded-full border-[3px] border-[#7424ed]' />
                )
