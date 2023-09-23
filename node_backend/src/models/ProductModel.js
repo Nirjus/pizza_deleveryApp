@@ -7,7 +7,7 @@ const productSchema = new mongoose.Schema({
         required:[true, "Product name is required"],
         trim: true,
         unique: true,
-        minlength: [10, "Name contain atlist 4 character"],
+        minlength: [10, "Name contain atlist 10 character"],
     },
     description:{
         type: String,
@@ -40,10 +40,9 @@ const productSchema = new mongoose.Schema({
             message: "Product price must be positive integer",
         }
     },
-    categoryId:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Category",
-        required: true,
+    category:{
+        type: String,
+        required: [true, "Please enter your product category"],
     }
 },{timestamps: true})
 

@@ -27,9 +27,10 @@ export const IsLogOut = ({ children }) => {
 };
 
 export const IsAdmin = ({ children }) => {
-  const { loading, isAuthenticate, user } = useSelector((state) => state.user);
-
-  if (loading === false) {
+  const {  isAuthenticate, loading ,user } = useSelector((state) => state.user);
+  if (loading === true) {
+   return <Loader />;
+  }else{
     if (!isAuthenticate) {
       return <Navigate to="/login" replace />;
     } else if (user.isAdmin !== true) {
@@ -37,5 +38,4 @@ export const IsAdmin = ({ children }) => {
     }
     return children;
   }
-  return children;
 };

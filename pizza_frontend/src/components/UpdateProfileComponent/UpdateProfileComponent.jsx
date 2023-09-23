@@ -27,10 +27,10 @@ const UpdateProfileComponent = () => {
            }
         }
     }
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
       e.preventDefault();
-      dispatch(updateUser(name,password,phone,address,image))
-     
+     await dispatch(updateUser(name,password,phone,address,image));
+       dispatch(loadUser());
     }
  
     useEffect(() => {
@@ -78,6 +78,7 @@ const UpdateProfileComponent = () => {
             placeholder='Name..'
             id='name'
             name='name'
+            required
                value={name}
                onChange={(e) => setName(e.target.value)}
                className=' outline-none h-10 rounded px-4'
@@ -102,7 +103,6 @@ const UpdateProfileComponent = () => {
             placeholder='Password..'
             id='password'
             name='password'
-            required
                value={password}
                onChange={(e) => setPassword(e.target.value)}
                className=' outline-none h-10 rounded px-4'

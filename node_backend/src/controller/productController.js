@@ -6,16 +6,14 @@ const { successResponse } = require("./responseController");
 
 const createProduct = async (req, res, next) => {
   try {
-    const { name, description, stock, price, categoryId, image } = req.body;
+    const { name, description, stock, price, category, image } = req.body;
 
     const product = await Product.findOne({ name: name });
     if (product) {
       throw createError(404, "This Product is already have");
     }
     // const image = req.file;
-    if (!image) {
-      throw createError(404, "Image file is required");
-    }
+   
     const myCloud = await cloudinary.v2.uploader.upload(image, {
       folder: "pizzaApp",
     });
@@ -25,7 +23,7 @@ const createProduct = async (req, res, next) => {
       price: price,
       stock: stock,
       slug: slugify(name),
-      categoryId: categoryId,
+      category: category,
       image: {
         public_id: myCloud.public_id,
         url: myCloud.secure_url,
@@ -96,7 +94,7 @@ const deleteProduct = async (req, res, next) => {
 const updateProduct = async (req, res, next) => {
   try {
     const { slug } = req.params;
-    const { name, description, stock, price, categoryId, image } = req.body;
+    const { name, description, stock, price, category, image } = req.body;
     // const image = req.file;
     const product = await Product.findOne({ slug: slug });
     if (!product) {
@@ -111,9 +109,15 @@ const updateProduct = async (req, res, next) => {
       updates.description = description;
     }
     if (stock) {
+      if(stock <= 0){
+        throw createError(404, "Stock must be positive Integer");
+      }
       updates.stock = stock;
     }
     if (price) {
+      if(price <= 0){
+        throw createError(404, "Price must be positive Integer");
+      }
       updates.price = price;
     }
     if (image) {
@@ -126,8 +130,8 @@ const updateProduct = async (req, res, next) => {
         url: myCloud.secure_url,
       };
     }
-    if (categoryId) {
-      updates.categoryId = categoryId;
+    if (category) {
+      updates.category = category;
     }
 
     const updatedProduct = await Product.findOneAndUpdate(

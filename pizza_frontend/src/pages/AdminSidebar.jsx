@@ -28,20 +28,20 @@ const AdminSidebar = ({active}) => {
                </Link>
             </div>
             <div className="w-[80%]  border-2 bg-[#f2dd8b16] hover:bg-[#f4ce44] transition duration-300 cursor-pointer m-5 border-[#eec41b] ">
-               <Link to={"/"} className='flex flex-row-reverse justify-center  items-center gap-3'>
-               <p className={` font-medium text-[25px] ${active === 4 ? "text-[#f63434]" : "text-white"} max-800px:hidden`}>All Pizza</p>
+               <Link to={"/admin-getpizza"} className='flex flex-row-reverse justify-center  items-center gap-3'>
+               <p className={` font-medium text-[25px] ${active === 4 ? "text-[#f63434]" : "text-white"} max-800px:hidden`}>All Foods</p>
                 <FaPizzaSlice size={25} color={`${active === 4 ? "red" : "white"}`}/>
                </Link>
             </div>
             <div className="w-[80%]  border-2 bg-[#f2dd8b16] hover:bg-[#f4ce44] transition duration-300 cursor-pointer m-5 border-[#eec41b] ">
-               <Link to={"/"} className='flex flex-row-reverse justify-center  items-center gap-3'>
-               <p className={` font-medium text-[25px] ${active === 5 ? "text-[#f63434]" : "text-white"} max-800px:hidden`}>Create Pizza</p>
+               <Link to={"/admin-createPizza"} className='flex flex-row-reverse justify-center  items-center gap-3'>
+               <p className={` font-medium text-[25px] ${active === 5 ? "text-[#f63434]" : "text-white"} max-800px:hidden`}>Create Food</p>
                 <PiCookingPotBold size={25} color={`${active === 5 ? "red" : "white"}`}/>
                </Link>
             </div>
             <div className="w-[80%]  border-2 bg-[#f2dd8b16] hover:bg-[#f4ce44] transition duration-300 cursor-pointer m-5 border-[#eec41b] ">
-               <Link to={"/"} className='flex flex-row-reverse justify-center  items-center gap-3'>
-               <p className={` font-medium text-[25px] ${active === 6 ? "text-[#f63434]" : "text-white"} max-800px:hidden`}>Update Pizza</p>
+               <Link  className='flex flex-row-reverse justify-center  items-center gap-3'>
+               <p className={` font-medium text-[25px] ${active === 6 ? "text-[#f63434]" : "text-white"} max-800px:hidden`}>Update Food</p>
                 <MdTipsAndUpdates size={25} color={`${active === 6 ? "red" : "white"}`}/>
                </Link>
             </div>
@@ -58,19 +58,19 @@ const AdminSidebar = ({active}) => {
                </Link>
             </div>
             <div className="w-[80%]  border-2 bg-[#f2dd8b16] hover:bg-[#f4ce44] transition duration-300 cursor-pointer m-5 border-[#eec41b] ">
-               <Link to={"/"} className='flex flex-row-reverse justify-center  items-center gap-3'>
+               <Link to={"/admin-category"} className='flex flex-row-reverse justify-center  items-center gap-3'>
                <p className={` font-medium text-[25px] ${active === 9 ? "text-[#f63434]" : "text-white"} max-800px:hidden`}>All Category</p>
                 <MdCategory size={25} color={`${active === 9 ? "red" : "white"}`}/>
                </Link>
             </div>
             <div className="w-[80%]  border-2 bg-[#f2dd8b16] hover:bg-[#f4ce44] transition duration-300 cursor-pointer m-5 border-[#eec41b] ">
-               <Link to={"/"} className='flex flex-row-reverse justify-center  items-center gap-3'>
+               <Link to={"/admin-createcategory"} className='flex flex-row-reverse justify-center  items-center gap-3'>
                <p className={` font-medium text-[25px] ${active === 10 ? "text-[#f63434]" : "text-white"} max-800px:hidden`}>Create Category</p>
                 <IoNewspaperSharp size={25} color={`${active === 10 ? "red" : "white"}`}/>
                </Link>
             </div>
             <div className="w-[80%]  border-2 bg-[#f2dd8b16] hover:bg-[#f4ce44] transition duration-300 cursor-pointer m-5 border-[#eec41b] ">
-               <Link to={"/"} className='flex flex-row-reverse justify-center  items-center gap-3'>
+               <Link to={"/admin-updatecategory"} className='flex flex-row-reverse justify-center  items-center gap-3'>
                <p className={` font-medium text-[25px] ${active === 11 ? "text-[#f63434]" : "text-white"} max-800px:hidden`}>Update Category</p>
                 <IoFastFoodSharp size={25} color={`${active === 11 ? "red" : "white"}`}/>
                </Link>

@@ -17,6 +17,7 @@ categoryRoter.post(
   createCategory
 );
 categoryRoter.get("/", getAllCategory);
+categoryRoter.get("/admin",isLogIn, isAdmin,getAllCategory);
 categoryRoter.get("/:slug", getSingleCategory);
 categoryRoter.delete("/delete/:slug", isLogIn, isAdmin, deleteCategory);
 categoryRoter.put("/update", isLogIn, isAdmin, updateCategory);

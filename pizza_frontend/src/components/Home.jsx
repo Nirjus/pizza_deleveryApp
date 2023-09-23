@@ -8,17 +8,23 @@ import img3 from "../assets/images/caurosul Images/pizza delevery man.png";
 import img4 from "../assets/images/pizza combos.png";
 import Typed from "typed.js";
 import { PizzaCard } from "./Pizzas";
-import { item } from "../data/data";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProducts } from "../redux/Action/product";
 
 
 const Home = () => {
   const el = useRef(null);
- 
+  const dispatch = useDispatch();
+  const {products} = useSelector((state) => state.product);
+  useEffect(() => {
+     dispatch(getAllProducts());
+  },[dispatch])
+
   useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ["Hungers...", ""],
+      strings: ["","H","Hu","Hun","Hung","Hunge","Hunger","Hungers","Hungers.","Hungers..","Hungers..."],
       startDelay: 300,
-      typeSpeed: 100,
+      typeSpeed: 50,
       backSpeed: 100,
       backDelay: 100,
       loop: true,
@@ -39,7 +45,7 @@ const Home = () => {
         <div className="carousolDiv">
           <div className="headingBanner">
             <h1>
-              Pizza for <span ref={el}>Hungers...</span>
+              Pizza for <span ref={el}></span>
             </h1>
             <h1>Grab Pizza</h1>
           </div>
@@ -89,15 +95,18 @@ const Home = () => {
       <div className="featuredPizza">
         <h1>All time favorite Pizzas</h1>
         <div className="pizzaContainer">
-          {item.slice(0, 5).map((i) => (
+          {
+          products && products.length === 0 ? <div><h1>Not have any pizza</h1></div> :
+          products && products.slice(0,5).map((i) => (
             <PizzaCard
-              key={i.id}
+              key={i._id}
               name={i.name}
-              imgSrc={i.imgSrc}
+              imgSrc={i.image.url}
               price={i.price}
               stock={i.stock}
-              id={i.id}
-              descripto={i.descriptio}
+              id={i._id}
+              slugName={i.slug}
+              descripto={i.description}
             />
           ))}
         </div>

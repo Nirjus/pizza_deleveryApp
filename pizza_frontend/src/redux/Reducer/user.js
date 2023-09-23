@@ -1,7 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit"
 
 const initialState = {
-    isAuthenticate: true,
+    isAuthenticate: false,
 }
 
 export const userReducer = createReducer(initialState,
@@ -49,12 +49,10 @@ export const userReducer = createReducer(initialState,
        },
        updateUserSuccess: (state, action) => {
          state.loading = false;
-         state.isAuthenticate = true;
          state.message = action.payload;
        },
        updateUserFail: (state,action) => {
         state.loading = false;
-         state.isAuthenticate = false;
          state.error = action.payload;
        },
 
@@ -63,12 +61,10 @@ export const userReducer = createReducer(initialState,
        },
        updateUserPasswordSuccess: (state, action) => {
          state.loading = false;
-         state.isAuthenticate = true;
          state.message = action.payload;
        },
        updateUserPasswordFail: (state,action) => {
         state.loading = false;
-         state.isAuthenticate = false;
          state.error = action.payload;
        },
 
@@ -90,16 +86,16 @@ export const userReducer = createReducer(initialState,
        },
 
        getAllUserRequest:(state) => {
-        state.loading = true;
+        state.userloading = true;
        },
        getAllUserSuccess: (state, action) => {
-         state.loading = false;
+         state.userloading = false;
          state.isAuthenticate = true;
          state.isAdmin = true;
          state.users = action.payload;
        },
        getAllUserFail: (state,action) => {
-        state.loading = false;
+        state.userloading = false;
          state.isAuthenticate = false;
          state.isAdmin = false;
          state.error = action.payload;

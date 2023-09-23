@@ -11,9 +11,10 @@
         width: 40%;
         padding: 1rem;
         img{
-            height: 500px;
-            width: 100%;
-            object-fit: contain;
+            height: 100%;
+            width: 500px;
+            object-fit: cover;
+            border-radius: 50%;
             transition: all 0.3s ease-in-out;
             &:hover{
              transform: rotate(90deg);   

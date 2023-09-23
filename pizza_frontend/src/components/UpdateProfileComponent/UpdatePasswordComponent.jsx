@@ -45,7 +45,7 @@ const UpdatePasswordComponent = () => {
       <div className=' w-full flex flex-col relative'>
       <label htmlFor="oldPassword" >Old Password</label>
        <input type={visible1 ? "text" : "password"} 
-      placeholder='oldPassword..'
+      placeholder='Old Password..'
       id='oldPassword'
       name='oldPassword'
       required

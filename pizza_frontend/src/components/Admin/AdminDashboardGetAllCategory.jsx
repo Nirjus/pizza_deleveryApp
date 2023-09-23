@@ -1,60 +1,50 @@
 import React, { useEffect, useState } from "react";
 import { AgGridReact } from "ag-grid-react";
-import { FaSun, FaUserAltSlash, FaUserCheck } from "react-icons/fa";
+import { FaSun } from "react-icons/fa";
 import { BsFillMoonStarsFill } from "react-icons/bs";
+import {  MdDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUser } from "../../redux/Action/user";
 import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
 import { RxCross1 } from "react-icons/rx";
 import Loader from "../Loader";
+import { getAllCategoryForAdmin } from "../../redux/Action/category";
 
-const AdminDashboardBanUser = () => {
+const AdminDashboardGetAllCategory = () => {
   const [click, setClick] = useState(false);
   const [open, setOpen] = useState(false);
   const [userId, setUserId] = useState("");
-  const { users,userloading } = useSelector((state) => state.user);
+  const { allCategory,categoryloading } = useSelector((state) => state.category);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllUser());
+    dispatch(getAllCategoryForAdmin());
   }, [dispatch]);
 
-  const banUserHandler = async (id) => {
+  const deleteHandler = async (slug) => {
     await axios
-      .put(`${server}/api/user/ban-user/${id}`,{},{withCredentials:true})
+      .delete(`${server}/api/category/delete/${slug}`, {
+        withCredentials: true,
+      })
       .then((res) => {
         toast.success(res.data.message);
       })
       .catch((error) => {
         toast.error(error.response.data.message);
       });
-      dispatch(getAllUser());
+      dispatch(getAllCategoryForAdmin());
   };
 
-  const unBanUserHandler = async (id) => {
-    await axios
-      .put(`${server}/api/user/unban-user/${id}`,{},{withCredentials:true})
-      .then((res) => {
-        toast.success(res.data.message);
-      })
-      .catch((error) => {
-        toast.error(error.response.data.message);
-      });
-      dispatch(getAllUser());
-  };
 
   const row = [];
-  users &&
-    users.forEach((i) => {
+  allCategory &&
+    allCategory.forEach((i) => {
       row.push({
         Name: i.name,
-        Email: i.email,
-        Phone: i.phone,
-        Image : i.image.url,
-        Id: i._id,
-        Joined: i.createdAt.slice(0, 10),
+        Slug: i.slug,
+        Image: i.image.url,
+        Created_At: i.createdAt.slice(0, 10),
       });
     });
 
@@ -64,38 +54,30 @@ const AdminDashboardBanUser = () => {
       field: "Name",
       checkboxSelection: true,
     },
-    { headerName: "Email", field: "Email", tooltipField: "Name" },
-    { headerName: "Phone_No", field: "Phone", tooltipField: "Name" },
+    { headerName: "Slug", field: "Slug", tooltipField: "Name" },
     { headerName: "Image", field: "Image", 
-     cellRenderer: (e) => (
-      <div className=" pl-5">
-        <img src={e.value} alt="avatar" className=" w-[40px] h-[40px] object-cover rounded-full" />
-      </div>
-     )
-    ,tooltipField: "Name" },
-    { headerName: "Id", field: "Id", tooltipField: "Name" },
-    { headerName: "Joind_At", field: "Joined", tooltipField: "Name" },
+       cellRenderer: (e) => (
+        <div className=" pl-5">
+          <img src={e.value} alt="product" className=" w-[40px] h-[40px] rounded-full object-cover" />
+        </div>
+       )
+  },
+    { headerName: "Created_At", field: "Created_At", tooltipField: "Name" },
     {
-      headerName: "Ban-User",
-      field: "Id",
+      headerName: "Delete",
+      field: "slug",
       cellRenderer: (e) => (
         <div>
           <button
-            className={`active:bg-slate-800 w-10 h-8 ml-6 ${click ? "hover:bg-slate-700" : "hover:bg-slate-200"}`}
-            onClick={() => setUserId(e.value) || setOpen(true)}
+            className={`active:bg-slate-800 w-10 h-8 ml-6 ${click ? "hover:bg-slate-700" : "hover:bg-slate-300"}`}
+            onClick={() => setUserId(e.data.Slug) || setOpen(true)}
           >
-           {
-            users.find((user) => user._id === e.value) &&
-            users.find((user) => user._id === e.value).isBanned ? (
-                <FaUserAltSlash size={20} />
-            ):(
-                <FaUserCheck size={20} />
-            )
-           }
+            <MdDelete size={22} />
           </button>
         </div>
       ),
     },
+   
   ];
 
   const options = {
@@ -116,10 +98,10 @@ const AdminDashboardBanUser = () => {
   };
 
   return (
-   <>
-   {
-    userloading ? <Loader /> : (
-      <div className=" w-[75%] min-h-screen flex justify-center items-center h-auto">
+    <>
+    {
+      categoryloading ? <Loader /> : (
+        <div className=" w-[75%] min-h-screen flex justify-center items-center h-auto">
       <div className="w-[90%] min-h-[90%] h-auto bg-[#2a2a2a] rounded-[20px] shadow-xl relative">
         <button
           className={` absolute right-1 top-8 z-30 border-2 ${
@@ -158,18 +140,9 @@ const AdminDashboardBanUser = () => {
             <div className="w-full flex justify-end cursor-pointer">
               <RxCross1 size={25} onClick={() => setOpen(false)} />
             </div>
-            {
-            users.find((user) => user._id === userId) &&
-            users.find((user) => user._id === userId).isBanned ? (
-                <h3 className=" text-[25px] text-center py-5 font-Poppins text-[#000000a3]">
-                Are you sure you want to UnBan this user?
-              </h3>
-            ):(
-                <h3 className=" text-[25px] text-center py-5 font-Poppins text-[#000000a3]">
-              Are you sure you want to Ban this user?
+            <h3 className=" text-[25px] text-center py-5 font-Poppins text-[#000000a3]">
+              Are you sure you want to delete this Category?
             </h3>
-            )
-           }
             <div className="w-full flex justify-center items-center">
               <div
                 className={` bg-black rounded-[10px] cursor-pointer text-white text-[18px] h-[42px] p-2 mr-4`}
@@ -178,26 +151,13 @@ const AdminDashboardBanUser = () => {
                 {" "}
                 cancel{" "}
               </div>
-              {
-                 users.find((user) => user._id === userId) &&
-                 users.find((user) => user._id === userId).isBanned ? (
-                    <div
+              <div
                 className={`bg-black rounded-[10px] cursor-pointer text-white text-[18px] h-[42px] p-2 ml-4`}
-                onClick={() => setOpen(false) || unBanUserHandler(userId)}
+                onClick={() => setOpen(false) || deleteHandler(userId)}
               >
                 {" "}
                 confirm{" "}
               </div>
-                 ) : (
-                    <div
-                className={`bg-black rounded-[10px] cursor-pointer text-white text-[18px] h-[42px] p-2 ml-4`}
-                onClick={() => setOpen(false) || banUserHandler(userId)}
-              >
-                {" "}
-                confirm{" "}
-              </div>
-                 )
-              }
             </div>
           </div>
         </div>
@@ -205,11 +165,11 @@ const AdminDashboardBanUser = () => {
       }
       </div>
     </div>
-    )
-   }
-   </>
+      )
+    }
+    </>
   );
 };
 
 
-export default AdminDashboardBanUser
+export default AdminDashboardGetAllCategory

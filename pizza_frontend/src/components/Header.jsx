@@ -64,7 +64,7 @@ const Header = () => {
         </p>
         <p>
           {" "}
-          <Link to={"/pizza-room"}>Pizzas</Link>
+          <Link to={"/pizza-room"}>Menu</Link>
         </p>
         <p>
           {" "}

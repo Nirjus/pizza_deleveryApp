@@ -11,7 +11,7 @@ const createCategory = async (req, res, next) => {
     const myCloud = await cloudinary.v2.uploader.upload(image,{
         folder: "pizzaApp",
     })
-    const categoryName = await Category.findOne({ name });
+    const categoryName = await Category.findOne({ name:name });
 
     if (categoryName) {
       throw createError(404, "This category already have");
@@ -54,7 +54,7 @@ const getAllCategory = async (req, res, next) => {
 const getSingleCategory = async (req, res, next) => {
     try {
         const {slug} = req.params;
-      const category = await Category.findOne({slug});
+      const category = await Category.findOne({slug:slug});
       if(!category){
         throw createError(404, "this category is not exists!");
       }
@@ -70,7 +70,7 @@ const getSingleCategory = async (req, res, next) => {
 const deleteCategory = async (req, res, next) => {
   try {
     const { slug } = req.params;
-    const deleteOne = await Category.findOneAndDelete(slug);
+    const deleteOne = await Category.findOneAndDelete({slug:slug});
     
     await cloudinary.v2.uploader.destroy(deleteOne.image.public_id);
 

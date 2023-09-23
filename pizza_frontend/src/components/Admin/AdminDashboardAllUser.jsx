@@ -9,12 +9,13 @@ import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
 import { RxCross1 } from "react-icons/rx";
+import Loader from "../Loader";
 
 const AdminDashboardAllUser = () => {
   const [click, setClick] = useState(false);
   const [open, setOpen] = useState(false);
   const [userId, setUserId] = useState("");
-  const { users } = useSelector((state) => state.user);
+  const { users,userloading } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -44,7 +45,7 @@ const AdminDashboardAllUser = () => {
         Email: i.email,
         Phone: i.phone,
         Address: i.address,
-        Id: i._id,
+        Image: i.image.url,
         Joined: i.createdAt.slice(0, 10),
       });
     });
@@ -58,7 +59,13 @@ const AdminDashboardAllUser = () => {
     { headerName: "Email", field: "Email", tooltipField: "Name" },
     { headerName: "Phone_No", field: "Phone", tooltipField: "Name" },
     { headerName: "Address", field: "Address", tooltipField: "Name" },
-    { headerName: "Id", field: "Id", tooltipField: "Name" },
+    { headerName: "Avatar", field: "Image", 
+    cellRenderer: (e) => (
+      <div className=" pl-5">
+        <img src={e.value} alt="avatar" className=" w-[40px] h-[40px] rounded-full object-cover" />
+      </div>
+    )
+    ,tooltipField: "Name" },
     { headerName: "Joind_At", field: "Joined", tooltipField: "Name" },
     {
       headerName: "Delete",
@@ -94,7 +101,10 @@ const AdminDashboardAllUser = () => {
   };
 
   return (
-    <div className=" w-[75%] min-h-screen flex justify-center items-center h-auto">
+    <>
+    {
+      userloading ? <Loader /> : (
+        <div className=" w-[75%] min-h-screen flex justify-center items-center h-auto">
       <div className="w-[90%] min-h-[90%] h-auto bg-[#2a2a2a] rounded-[20px] shadow-xl relative">
         <button
           className={` absolute right-1 top-8 z-30 border-2 ${
@@ -158,6 +168,9 @@ const AdminDashboardAllUser = () => {
       }
       </div>
     </div>
+      )
+    }
+    </>
   );
 };
 

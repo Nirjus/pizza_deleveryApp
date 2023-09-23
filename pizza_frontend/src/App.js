@@ -23,6 +23,12 @@ import ResetPassword from "./pages/ResetPassword";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminAllUsers from "./pages/AdminAllUsers";
 import AdminBanUsers from "./pages/AdminBanUsers";
+import AdminCreatePizza from "./pages/AdminCreatePizza";
+import AdminAllPizza from "./pages/AdminAllPizza";
+import AdminUpdatePizza from "./pages/AdminUpdatePizza";
+import AdminAllCategory from "./pages/AdminAllCategory";
+import AdminCreateCategory from "./pages/AdminCreateCategory";
+import AdminUpdateCategory from "./pages/AdminUpdateCategory";
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 // stling files
@@ -33,8 +39,7 @@ import "./styles/footer.scss";
 import "./styles/pizzas.scss";
 import "./styles/order.scss";
 import "./styles/category.scss";
-
-
+import { getAllProducts } from "./redux/Action/product";
 
 
 
@@ -43,6 +48,7 @@ function App() {
 
   useEffect(() => {
     dispatch(loadUser());
+    dispatch(getAllProducts());
   }, [dispatch]);
   return (
     <div className="App">
@@ -53,7 +59,7 @@ function App() {
           <Route path="/orders" element={<Order />} />
           <Route path="/pizza-room" element={<Pizzas />} />
           <Route path="/category" element={<Category />} />
-          <Route path="/pizza/:id" element={<PizzaPage />} />
+          <Route path="/pizza/:slug" element={<PizzaPage />} />
           <Route path="/logIn" element={
           <IsLogOut>
           <Login />
@@ -118,6 +124,36 @@ function App() {
            <Route path="/admin-banusers" element={
             <IsAdmin>
             <AdminBanUsers />
+            </IsAdmin>
+          } />
+           <Route path="/admin-createPizza" element={
+            <IsAdmin>
+            <AdminCreatePizza />
+            </IsAdmin>
+          } />
+          <Route path="/admin-getpizza" element={
+            <IsAdmin>
+            <AdminAllPizza />
+            </IsAdmin>
+          } />
+           <Route path="/admin-updatepizza/:slug" element={
+            <IsAdmin>
+            <AdminUpdatePizza />
+            </IsAdmin>
+          } />
+          <Route path="/admin-category" element={
+            <IsAdmin>
+            <AdminAllCategory />
+            </IsAdmin>
+          } />
+          <Route path="/admin-createcategory" element={
+            <IsAdmin>
+            <AdminCreateCategory />
+            </IsAdmin>
+          } />
+          <Route path="/admin-updatecategory" element={
+            <IsAdmin>
+            <AdminUpdateCategory />
             </IsAdmin>
           } />
         </Routes>
