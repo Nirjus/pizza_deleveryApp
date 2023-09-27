@@ -43,7 +43,7 @@ const AdminDashboardGetAllPizza = () => {
     products.forEach((i) => {
       row.push({
         Name: i.name,
-        Slug: i.slug,
+        Category: i.category,
         Price: i.price,
         Stock: i.stock,
         Image: i.image.url,
@@ -57,7 +57,7 @@ const AdminDashboardGetAllPizza = () => {
       field: "Name",
       checkboxSelection: true,
     },
-    { headerName: "Slug", field: "Slug", tooltipField: "Name" },
+    { headerName: "Category", field: "Category", tooltipField: "Name" },
     { headerName: "Price", field: "Price", tooltipField: "Name" },
     { headerName: "Stock", field: "Stock", tooltipField: "Name" },
     { headerName: "Image", field: "Image", 

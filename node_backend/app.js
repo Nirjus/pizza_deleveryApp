@@ -12,6 +12,8 @@ const { authRoute } = require("./src/router/authRouter");
 const { categoryRoter } = require("./src/router/categoryRouter");
 const productRoute = require("./src/router/productRouter");
 const eventRoute = require("./src/router/eventRouter");
+const  paymentRoute  = require("./src/router/paymantRouter");
+const orderRoute = require("./src/router/orderRoute");
 
 const app = express();
 
@@ -42,7 +44,9 @@ app.use("/api/user", seedRoute);
 app.use("/api/user", userRoute);
 app.use("/api/category", categoryRoter);
 app.use("/api/product", productRoute);
+app.use("/api/payment", paymentRoute);
 app.use("/api/event", eventRoute);
+app.use("/api/order", orderRoute);
 app.use("/api/auth", authRoute);
 
 

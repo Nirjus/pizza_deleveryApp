@@ -10,7 +10,7 @@ import { loadUser } from "../redux/Action/user";
 const Header = () => {
   const [open, setOpen] = useState(false);
 
-  //  const {cartItems} = useSelector(state => state.cart);
+   const {cart} = useSelector((state) => state.cart);
   const { isAuthenticate,user } = useSelector((state) => state.user);
      
   const dispatch = useDispatch();
@@ -33,15 +33,15 @@ const Header = () => {
           <p>
             {" "}
             <Link to={"/pizza-room"} onClick={() => setOpen(false)}>
-              Pizzas
+              Menu
             </Link>
           </p>
           <p>
             {" "}
             <Link to={"/orders"} onClick={() => setOpen(false)}>
-              Orders
+              Carts
             </Link>
-            {/* {cartItems.length > 0 ? <span>{cartItems.length}</span> : ""} */}
+            {cart.length > 0 ? <span>{cart.length}</span> : ""}
           </p>
           <p>
             {" "}
@@ -68,8 +68,8 @@ const Header = () => {
         </p>
         <p>
           {" "}
-          <Link to={"/orders"}>Orders</Link>{" "}
-          {/* {cartItems.length > 0 ? <span>{cartItems.length}</span> : ""} */}
+          <Link to={"/orders"}>Carts</Link>{" "}
+          {cart.length > 0 ? <span>{cart.length}</span> : ""}
         </p>
         <p>
           {" "}

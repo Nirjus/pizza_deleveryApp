@@ -66,7 +66,7 @@
                      }
                 }
                 }
-                a{
+               
                     button{
                         border: none;
                         padding: 1rem;
@@ -76,10 +76,9 @@
                         font-weight: 800;
                         cursor: pointer;
                     }
-                }
+                
                 svg{
-                    margin-top: -46px;
-                    margin-right: -250px;
+                   
                     cursor: pointer;
                     &:hover{
                         color: orangered;

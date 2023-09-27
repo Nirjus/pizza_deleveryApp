@@ -18,6 +18,7 @@ const Home = () => {
   const {products} = useSelector((state) => state.product);
   useEffect(() => {
      dispatch(getAllProducts());
+     window.scrollTo(0,0);
   },[dispatch])
 
   useEffect(() => {

@@ -30,6 +30,10 @@ const cloudinaryApiSecret = process.env.CLOUDINARY_API_SECRET;
 
 const cloudinaryName = process.env.CLOUDINARY_CLOUD_NAME;
 
+const stripeKey = process.env.STRIPE_API_KEY;
+
+const stripeSecret = process.env.STRIPE_API_SECRET;
+
  
 module.exports = {
 
@@ -46,5 +50,7 @@ module.exports = {
     cloudinaryApiKey,
     cloudinaryApiSecret,
     cloudinaryName,
+    stripeKey,
+    stripeSecret,
 
 }
