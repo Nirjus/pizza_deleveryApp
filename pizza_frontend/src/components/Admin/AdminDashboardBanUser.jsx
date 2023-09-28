@@ -23,7 +23,7 @@ const AdminDashboardBanUser = () => {
 
   const banUserHandler = async (id) => {
     await axios
-      .put(`${server}/api/user/ban-user/${id}`,{},{withCredentials:true})
+      .put(`${server}/user/ban-user/${id}`,{},{withCredentials:true})
       .then((res) => {
         toast.success(res.data.message);
       })
@@ -35,7 +35,7 @@ const AdminDashboardBanUser = () => {
 
   const unBanUserHandler = async (id) => {
     await axios
-      .put(`${server}/api/user/unban-user/${id}`,{},{withCredentials:true})
+      .put(`${server}/user/unban-user/${id}`,{},{withCredentials:true})
       .then((res) => {
         toast.success(res.data.message);
       })

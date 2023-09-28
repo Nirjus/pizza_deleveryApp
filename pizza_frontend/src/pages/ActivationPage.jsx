@@ -14,7 +14,7 @@ const ActivationPage = () => {
     useEffect(() => {
         if(token){
       const activateUser = async () => {
-        await axios.post(`${server}/api/user/verify`,{
+        await axios.post(`${server}/user/verify`,{
             token
         }).then((res) => {
             toast.success(res.data.message);

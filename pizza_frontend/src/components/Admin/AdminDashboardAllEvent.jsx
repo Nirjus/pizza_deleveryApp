@@ -16,7 +16,7 @@ const AdminDashboardAllEvent = () => {
 
   const deleteHandler = async (slug) => {
     await axios
-      .delete(`${server}/api/event/delete/${slug}`, {
+      .delete(`${server}/event/delete/${slug}`, {
         withCredentials: true,
       })
       .then((res) => {

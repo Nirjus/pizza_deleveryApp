@@ -40,14 +40,14 @@ app.get("/test",(req, res) => {
 
 
 //   routes
-app.use("/api/user", seedRoute);
-app.use("/api/user", userRoute);
-app.use("/api/category", categoryRoter);
-app.use("/api/product", productRoute);
-app.use("/api/payment", paymentRoute);
-app.use("/api/event", eventRoute);
-app.use("/api/order", orderRoute);
-app.use("/api/auth", authRoute);
+app.use("/api/v2/user", seedRoute);
+app.use("/api/v2/user", userRoute);
+app.use("/api/v2/category", categoryRoter);
+app.use("/api/v2/product", productRoute);
+app.use("/api/v2/payment", paymentRoute);
+app.use("/api/v2/event", eventRoute);
+app.use("/api/v2/order", orderRoute);
+app.use("/api/v2/auth", authRoute);
 
 
 //   client error

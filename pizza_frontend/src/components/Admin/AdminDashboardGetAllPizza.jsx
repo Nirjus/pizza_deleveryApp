@@ -25,7 +25,7 @@ const AdminDashboardGetAllPizza = () => {
 
   const deleteHandler = async (slug) => {
     await axios
-      .delete(`${server}/api/product/delete/${slug}`, {
+      .delete(`${server}/product/delete/${slug}`, {
         withCredentials: true,
       })
       .then((res) => {

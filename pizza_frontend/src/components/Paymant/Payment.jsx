@@ -45,7 +45,7 @@ const Payment = () => {
       },
     };
     const { data } = await axios.post(
-      `${server}/api/payment/process`,
+      `${server}/payment/process`,
       {orderData},{withCredentials:true}
     );
     // console.log(data.payload.client_secret);
@@ -68,7 +68,7 @@ const Payment = () => {
           };
       
           await axios
-            .post(`${server}/api/order/create`, order, config)
+            .post(`${server}/order/create`, order, config)
             .then((res) => {
               navigate("/success");
               toast.success("Order successful!");
@@ -100,7 +100,7 @@ const Payment = () => {
     };
 
     await axios
-    .post(`${server}/api/order/create`, order, config)
+    .post(`${server}/order/create`, order, config)
     .then((res) => {
       navigate("/success");
       toast.success("Order successful!");

@@ -8,7 +8,7 @@ export const createProduct =
         type: "createProductRequest",
       });
       const { data } = await axios.post(
-        `${server}/api/product/create`,
+        `${server}/product/create`,
         {
           name,
           description,
@@ -37,7 +37,7 @@ export const getAllProducts = () => async (dispatch) => {
     dispatch({
       type: "getAllProductRequest",
     });
-    const { data } = await axios.get(`${server}/api/product`, {
+    const { data } = await axios.get(`${server}/product`, {
       withCredentials: true,
     });
     dispatch({
@@ -57,7 +57,7 @@ export const getProduct = (slug) => async (dispatch) => {
     dispatch({
       type: "getProductRequest",
     });
-    const { data } = await axios.get(`${server}/api/product/${slug}`, {
+    const { data } = await axios.get(`${server}/product/${slug}`, {
       withCredentials: true,
     });
     dispatch({
@@ -77,7 +77,7 @@ export const getAllProductsForAdmin = () => async (dispatch) => {
     dispatch({
       type: "getProductsForAdminRequest",
     });
-    const { data } = await axios.get(`${server}/api/product/admin`, {
+    const { data } = await axios.get(`${server}/product/admin`, {
       withCredentials: true,
     });
     dispatch({
@@ -96,7 +96,7 @@ export const updateProductAdmin = (slug,name, description, stock, price, categor
     dispatch({
       type: "updateProductRequest",
     });
-    const { data } = await axios.put(`${server}/api/product/update/${slug}`,{
+    const { data } = await axios.put(`${server}/product/update/${slug}`,{
       name, description, stock, price, category, image
     }, {
       withCredentials:true,

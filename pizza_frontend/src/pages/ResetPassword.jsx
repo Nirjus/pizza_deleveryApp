@@ -16,7 +16,7 @@ const ResetPassword = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-      await axios.put(`${server}/api/user/reset-password`,{
+      await axios.put(`${server}/user/reset-password`,{
         token, password
       }).then((res) => {
         toast.success(res.data.message);

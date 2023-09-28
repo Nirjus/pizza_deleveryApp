@@ -14,7 +14,7 @@ const ForgetPassword = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-      await axios.post(`${server}/api/user/forget-password`,{
+      await axios.post(`${server}/user/forget-password`,{
         email
       }).then((res) => {
         toast.success(res.data.message);

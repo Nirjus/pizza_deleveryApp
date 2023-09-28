@@ -24,7 +24,7 @@ const AdminDashboardAllUser = () => {
 
   const deleteHandler = async (id) => {
     await axios
-      .delete(`${server}/api/user/${id}`, {
+      .delete(`${server}/user/${id}`, {
         withCredentials: true,
       })
       .then((res) => {

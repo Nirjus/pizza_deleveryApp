@@ -7,7 +7,7 @@ export const getAllEvent = () => async (dispatch) => {
         dispatch({
             type: "getAllEventRequest",
         })
-        const {data} = await axios.get(`${server}/api/event`);
+        const {data} = await axios.get(`${server}/event`);
         dispatch({
             type: "getAllEventSuccess",
             payload: data.payload.events,
@@ -26,7 +26,7 @@ export const getAllEventForAdmin = () => async (dispatch) => {
         dispatch({
             type: "getAllEventAdminRequest",
         })
-        const {data} = await axios.get(`${server}/api/event/admin`,{
+        const {data} = await axios.get(`${server}/event/admin`,{
             withCredentials: true,
         });
         dispatch({
@@ -47,7 +47,7 @@ export const createEvent = (name, description, stock, price) => async (dispatch)
         dispatch({
             type: "createEventRequest",
         })
-        const {data} = await axios.post(`${server}/api/event/create`,{
+        const {data} = await axios.post(`${server}/event/create`,{
             name, description, stock, price
         },{
             withCredentials: true,

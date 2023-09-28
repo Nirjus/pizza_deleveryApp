@@ -7,7 +7,7 @@ export const getAllOrder = () => async (dispatch) => {
         dispatch({
             type:"getAllOrderRequest",
         })
-        const {data} = await axios.get(`${server}/api/order`,{
+        const {data} = await axios.get(`${server}/order`,{
             withCredentials: true,
         });
 
@@ -29,7 +29,7 @@ export const getSingleOrder = (id) => async (dispatch) => {
         dispatch({
             type:"getSingleOrderRequest",
         })
-        const {data} = await axios.get(`${server}/api/order/${id}`,{
+        const {data} = await axios.get(`${server}/order/${id}`,{
               withCredentials: true,
         });
 
@@ -52,7 +52,7 @@ export const getAllOrdersForAdmin = () => async (dispatch) => {
         dispatch({
             type:"getAllOrderAdminRequest",
         })
-        const {data} = await axios.get(`${server}/api/order/admin`,{
+        const {data} = await axios.get(`${server}/order/admin`,{
             withCredentials: true,
         });
 

@@ -24,7 +24,7 @@ const AdminDashboardGetAllCategory = () => {
 
   const deleteHandler = async (slug) => {
     await axios
-      .delete(`${server}/api/category/delete/${slug}`, {
+      .delete(`${server}/category/delete/${slug}`, {
         withCredentials: true,
       })
       .then((res) => {

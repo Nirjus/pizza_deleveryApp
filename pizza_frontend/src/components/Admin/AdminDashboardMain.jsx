@@ -68,7 +68,7 @@ const AdminDashboardMain = () => {
         field: "Id",
         cellRenderer: (e) => {
             const updateHandler = async (e) => {
-                await axios.put(`${server}/api/order/update/${e.value}`,{},{withCredentials:true})
+                await axios.put(`${server}/order/update/${e.value}`,{},{withCredentials:true})
                 .then((res) => {
                     toast.success(res.data.message);
                      window.location.reload(true);

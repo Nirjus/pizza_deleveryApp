@@ -5,7 +5,7 @@ export const loadUser = () => async (dispatch) => {
         dispatch({
             type: "loadUserRequest",
         })
-        const {data} = await axios.get(`${server}/api/user/me`,{
+        const {data} = await axios.get(`${server}/user/me`,{
             withCredentials: true,
         })
         dispatch({
@@ -24,7 +24,7 @@ export const getAllUser = () => async (dispatch) => {
         dispatch({
             type: "getAllUserRequest",
         })
-        const {data} = await axios.get(`${server}/api/user`,{
+        const {data} = await axios.get(`${server}/user`,{
             withCredentials: true,
         })
         dispatch({
@@ -44,7 +44,7 @@ export const createUser = (name, email, password, phone, address, image) => asyn
         dispatch({
             type: "createUserRequest",
         })
-        const {data} = await axios.post(`${server}/api/user/register`,{
+        const {data} = await axios.post(`${server}/user/register`,{
             name, email, password, phone, address, image
         },{
             withCredentials: true,
@@ -67,7 +67,7 @@ export const loginUser = (email,password) => async (dispatch) => {
         dispatch({
             type: "loginUserRequest",
         })
-        const {data} = await axios.post(`${server}/api/auth/login`,{
+        const {data} = await axios.post(`${server}/auth/login`,{
            email,password
         },{
             withCredentials: true,
@@ -90,7 +90,7 @@ export const logoutUser = () => async (dispatch) => {
         dispatch({
             type: "logoutUserRequest",
         })
-        const {data} = await axios.get(`${server}/api/auth/logout`,{
+        const {data} = await axios.get(`${server}/auth/logout`,{
             withCredentials: true,
         });
         
@@ -111,7 +111,7 @@ export const updateUser = (name, password, phone, address, image) => async (disp
         dispatch({
             type: "updateUserRequest",
         })
-        const {data} = await axios.put(`${server}/api/user/update`,{
+        const {data} = await axios.put(`${server}/user/update`,{
             name, password, phone, address, image
         },{
             withCredentials: true,
@@ -134,7 +134,7 @@ export const updateUserPassword = (oldPassword, newPassword) => async (dispatch)
         dispatch({
             type: "updateUserPasswordRequest",
         })
-        const {data} = await axios.put(`${server}/api/user/update-password`,{
+        const {data} = await axios.put(`${server}/user/update-password`,{
             oldPassword, newPassword
         },{
             withCredentials: true,

@@ -8,7 +8,7 @@ export const createCategory =
         type: "createCategoryRequest",
       });
       const { data } = await axios.post(
-        `${server}/api/category/create`,
+        `${server}/category/create`,
         {
           name,
           image,
@@ -33,7 +33,7 @@ export const getAllCategory = () => async (dispatch) => {
     dispatch({
       type: "getAllCategoryRequest",
     });
-    const { data } = await axios.get(`${server}/api/category`, {
+    const { data } = await axios.get(`${server}/category`, {
       withCredentials: true,
     });
     dispatch({
@@ -53,7 +53,7 @@ export const getAllCategoryForAdmin = () => async (dispatch) => {
     dispatch({
       type: "getCategoryForAdminRequest",
     });
-    const { data } = await axios.get(`${server}/api/category/admin`, {
+    const { data } = await axios.get(`${server}/category/admin`, {
       withCredentials: true,
     });
     dispatch({
@@ -72,7 +72,7 @@ export const updateCategoryAdmin = (oldName, newName,image) => async (dispatch) 
     dispatch({
       type: "updateCategoryRequest",
     });
-    const { data } = await axios.put(`${server}/api/category/update`,{
+    const { data } = await axios.put(`${server}/category/update`,{
         oldName, newName,image
     }, {
       withCredentials:true,
