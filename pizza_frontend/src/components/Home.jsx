@@ -11,6 +11,7 @@ import { PizzaCard } from "./Pizzas";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../redux/Action/product";
 import { getAllEvent } from "../redux/Action/event";
+import { Link } from "react-router-dom";
 
 
 const Home = () => {
@@ -88,8 +89,10 @@ const Home = () => {
               </h4>
   
               <h2>diccount up to {i.price} %</h2>
-  
+              <Link to={"/category"}>
               <button>visit</button>
+              </Link>
+             
             </div>
             ))
           }

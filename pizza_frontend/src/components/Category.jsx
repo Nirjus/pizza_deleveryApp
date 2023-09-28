@@ -9,6 +9,7 @@ const Category = () => {
   const {allCategory,loading} = useSelector((state) => state.category);
   useEffect(() => {
     dispatch(getAllCategory());
+    window.scrollTo(0,0);
   },[dispatch])
   return (
    <>
