@@ -32,7 +32,7 @@ app.use(cors({
     credentials: true,
 }))
 
-app.get("/",(req, res) => {
+app.get("/test",(req, res) => {
     res.status(201).json({
         message: "Hey , Your backend is running",
     })
