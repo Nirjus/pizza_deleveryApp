@@ -46,13 +46,13 @@ const AdminSidebar = ({active}) => {
                </Link>
             </div>
             <div className="w-[80%]  border-2 bg-[#f2dd8b16] hover:bg-[#f4ce44] transition duration-300 cursor-pointer m-5 border-[#eec41b] ">
-               <Link to={"/"} className='flex flex-row-reverse justify-center  items-center gap-3'>
+               <Link to={"/admin-Event"} className='flex flex-row-reverse justify-center  items-center gap-3'>
                <p className={` font-medium text-[25px] ${active === 7 ? "text-[#f63434]" : "text-white"} max-800px:hidden`}>All Events</p>
                 <MdEventAvailable size={25} color={`${active === 7 ? "red" : "white"}`}/>
                </Link>
             </div>
             <div className="w-[80%]  border-2 bg-[#f2dd8b16] hover:bg-[#f4ce44] transition duration-300 cursor-pointer m-5 border-[#eec41b] ">
-               <Link to={"/"} className='flex flex-row-reverse justify-center  items-center gap-3'>
+               <Link to={"/admin-createEvent"} className='flex flex-row-reverse justify-center  items-center gap-3'>
                <p className={` font-medium text-[25px] ${active === 8 ? "text-[#f63434]" : "text-white"} max-800px:hidden`}>Create Events</p>
                 <MdCreateNewFolder size={25} color={`${active === 8 ? "red" : "white"}`}/>
                </Link>

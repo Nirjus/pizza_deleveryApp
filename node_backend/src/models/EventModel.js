@@ -23,10 +23,7 @@ const EventSchema = new mongoose.Schema({
             message: "Event stock must be positive integer"
         }
     },
-    image:{
-        public_id: String,
-        url: String,
-    },
+   
     price:{
         type: Number,
         required:[true, "Event price is necessery field"],

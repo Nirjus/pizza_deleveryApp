@@ -10,14 +10,17 @@ import Typed from "typed.js";
 import { PizzaCard } from "./Pizzas";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../redux/Action/product";
+import { getAllEvent } from "../redux/Action/event";
 
 
 const Home = () => {
   const el = useRef(null);
   const dispatch = useDispatch();
   const {products} = useSelector((state) => state.product);
+  const {events} = useSelector((state) => state.event);
   useEffect(() => {
      dispatch(getAllProducts());
+     dispatch(getAllEvent());
      window.scrollTo(0,0);
   },[dispatch])
 
@@ -76,18 +79,21 @@ const Home = () => {
       </div>
       <div className="offerSection">
         <div className="offers">
-          <div className="offerInfo">
-            <h1>Crunchy and Crispy Pizza combo</h1>
-            <h4>
-              pizza, dish of Italian origin consisting of a flattened disk of
-              bread dough topped with some combination of olive oil, oregano,
-              tomato,
-            </h4>
-
-            <h2>15:15:45</h2>
-
-            <button>Order Now</button>
-          </div>
+          {
+            events && events.map((i) => (
+              <div className="offerInfo">
+              <h1>{i.name}</h1>
+              <h4>
+               {i.description}
+              </h4>
+  
+              <h2>diccount up to {i.price} %</h2>
+  
+              <button>visit</button>
+            </div>
+            ))
+          }
+          
           <div className="offerImage">
             <img src={img4} alt={"pizzaCombo"} />
           </div>

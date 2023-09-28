@@ -9,7 +9,7 @@ import { getAllUser } from "../../redux/Action/user";
 import {  getAllOrdersForAdmin } from "../../redux/Action/order";
 import { Link } from "react-router-dom";
 import Loader from "../Loader";
-import { MdUpdate } from "react-icons/md";
+import { MdUpdate, MdUpdateDisabled } from "react-icons/md";
 import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
@@ -71,18 +71,25 @@ const AdminDashboardMain = () => {
                 await axios.put(`${server}/api/order/update/${e.value}`,{},{withCredentials:true})
                 .then((res) => {
                     toast.success(res.data.message);
+                     window.location.reload(true);
                 }).catch((error) => {
                     toast.error(error.response.data.message);
                 })
             }
             return(
                 <div>
-                <button
-                    className={`active:bg-slate-400 w-10 h-8 ml-6 border hover:bg-slate-300`}
-                    onClick={() => updateHandler(e)}
-                  >
-                   <MdUpdate size={25}/>
-                  </button>
+               {
+                e.data?.Status === "Delevered" ? (
+                  <MdUpdateDisabled size={25}/>
+                ) : (
+                  <button
+                  className={`active:bg-slate-400 w-10 h-8 ml-6 border hover:bg-slate-300`}
+                  onClick={() => updateHandler(e)}
+                >
+                 <MdUpdate size={25}/>
+                </button>
+                )
+               }
                 </div>
             )
         },

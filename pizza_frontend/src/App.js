@@ -37,10 +37,14 @@ import AdminUpdatePizza from "./pages/AdminUpdatePizza";
 import AdminAllCategory from "./pages/AdminAllCategory";
 import AdminCreateCategory from "./pages/AdminCreateCategory";
 import AdminUpdateCategory from "./pages/AdminUpdateCategory";
+import AdminCreateEvent from "./pages/AdminCreateEvent";
+import AddminAllEvent from "./pages/AddminAllEvent";
 import { getAllProducts } from "./redux/Action/product";
 import UserAllOrder from "./pages/UserAllOrder";
 import CheckoutPage from "./pages/CheckoutPage";
 import OrderDetailsPage from "./pages/OrderDetailsPage";
+import TrackDetails from "./pages/TrackDetails.jsx"
+import UserTrackOrder from "./pages/UserTrackOrder";
 import PaymantPage from "./pages/PaymantPage";
 import Success from "./components/Paymant/Success";
 import Cancel from "./components/Paymant/Cancel";
@@ -167,11 +171,27 @@ function App() {
               </UserProtectedRoute>
             }
           />
+          <Route
+            path="/track-orders"
+            element={
+              <UserProtectedRoute>
+                <UserTrackOrder />
+              </UserProtectedRoute>
+            }
+          />
            <Route
             path="/order-details/:id"
             element={
               <UserProtectedRoute>
                 <OrderDetailsPage />
+              </UserProtectedRoute>
+            }
+          />
+          <Route
+            path="/track-order-details/:id"
+            element={
+              <UserProtectedRoute>
+                <TrackDetails />
               </UserProtectedRoute>
             }
           />
@@ -233,6 +253,22 @@ function App() {
             element={
               <IsAdmin>
                 <AdminUpdatePizza />
+              </IsAdmin>
+            }
+          />
+          <Route
+            path="/admin-createEvent"
+            element={
+              <IsAdmin>
+                <AdminCreateEvent />
+              </IsAdmin>
+            }
+          />
+          <Route
+            path="/admin-Event"
+            element={
+              <IsAdmin>
+                <AddminAllEvent />
               </IsAdmin>
             }
           />

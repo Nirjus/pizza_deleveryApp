@@ -55,12 +55,34 @@ const PizzaPage = () => {
             <aside>
               <h1>{product.name}</h1>
               <p>{product.description}</p>
-              <h3>${product.price}</h3>
+              <h3>₹ {product.price}</h3>
             </aside>
-            Chosse your Pizza Size:
+            Chosse your {product?.category} Size:
             {arrbtn.map((i) => (
               <button>{i}</button>
             ))}
+           {
+            product.category === "Pizza" ? (
+              <div>
+              <select name="" id="" className=" mt-5 w-full rounded px-2 h-10 outline-none text-white bg-[#f87e41]">
+              <option value="">Chose your cheese type</option>
+              <option value="Mozzarella Cheese">Mozzarella Cheese</option>
+              <option value="Provolone Cheese">Provolone Cheese</option>
+              <option value="Cheddar Cheese">Cheddar Cheese</option>
+              <option value="Parmesan Cheese">Parmesan Cheese</option>
+              <option value="Goat Cheese">Goat Cheese</option>
+            </select>
+            <select name="" id="" className=" mt-5 w-full rounded px-2 h-10 outline-none text-white bg-[#f87e41]">
+              <option value="">Chose your sauce</option>
+              <option value="Pesto Sauce">Pesto Sauce</option>
+              <option value="Creamy Alfredo Sauce">Creamy Alfredo Sauce</option>
+              <option value="BBQ Sauce Isn't Just for Ribs">BBQ Sauce Isn't Just for Ribs</option>
+              <option value="Taco Pizzas with Salsa and Refried Beans">Taco Pizzas with Salsa and Refried Beans</option>
+              <option value="Ranch ">Ranch </option>
+            </select>
+            </div>
+            ) : ""
+           }
             <p>Ingredeients:</p>
             <div className="pizzaorder">
              <img src={image1} alt="" />
