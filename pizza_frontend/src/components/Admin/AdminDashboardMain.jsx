@@ -2,7 +2,6 @@ import React, { useEffect,useState } from "react";
 import { RxArrowUp } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
 import { BsFillMoonStarsFill } from "react-icons/bs";
-import { AiOutlineArrowRight } from "react-icons/ai";
 import { AgGridReact } from "ag-grid-react";
 import { FaSun } from "react-icons/fa";
 import { getAllUser } from "../../redux/Action/user";
@@ -48,21 +47,7 @@ const AdminDashboardMain = () => {
     { headerName: "Order_ID", field: "Id" },
     { headerName: "Status", field: "Status" },
     { headerName: "Created_At", field: "Created"},
-    {
-        headerName: "Order_Details",
-        field: "Id",
-        cellRenderer: (e) => (
-          <div>
-          <Link to={`/order-details/${e.value}`}>
-          <button
-              className={`active:bg-slate-400 w-10 h-8 ml-6 border hover:bg-slate-300`}
-            >
-             <AiOutlineArrowRight size={25}/>
-            </button>
-          </Link>
-          </div>
-        ),
-      },
+    
       {
         headerName: "Update_status",
         field: "Id",
