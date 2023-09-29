@@ -55,7 +55,7 @@ const order = orders && orders.find((i) => i._id === id);
       <br />
       <div className="w-[80%] border shadow-md p-4 m-3 mx-auto mt-[50px] cursor-pointer flex flex-row items-center gap-[40px] max-800px:gap-[15px] hover:bg-slate-200">
        <h1 className="text-[#000] font-[600] text-[17px] ">Payment Type: <span className=" pl-4 font-[400] text-[15px] text-[#353535]"> {order?.paymentInfo?.paymentType} </span></h1>
-       <h1 className="text-[#000] font-[600] text-[17px] ">Payment Type: <span className=" pl-4 font-[400] text-[15px] text-[#353535]"> {order?.paymentInfo?.status} </span></h1>
+       <h1 className="text-[#000] font-[600] text-[17px] ">Payment Status: <span className=" pl-4 font-[400] text-[15px] text-[#353535]"> {order?.paymentInfo?.status} </span></h1>
       </div>
     </div>
   );
