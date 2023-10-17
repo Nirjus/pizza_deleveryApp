@@ -10,7 +10,7 @@
         img{
             width: 200px;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
             border: 1px solid black;
             border-radius: 50%;
         }
@@ -40,9 +40,10 @@
         .userDetails{
            
             .lightingText{
-               
+                word-break: break-all;
                 padding: 0px;
-                height: 40px;
+                height: auto;
+                min-height: 30px;
                 
             }
         }
