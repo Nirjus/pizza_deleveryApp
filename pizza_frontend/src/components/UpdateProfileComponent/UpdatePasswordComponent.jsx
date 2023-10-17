@@ -43,7 +43,7 @@ const UpdatePasswordComponent = () => {
    
       
       <div className=' w-full flex flex-col relative'>
-      <label htmlFor="oldPassword" >Old Password</label>
+      <label htmlFor="oldPassword" className=' max-800px:text-center' >Old Password</label>
        <input type={visible1 ? "text" : "password"} 
       placeholder='Old Password..'
       id='oldPassword'
@@ -51,7 +51,7 @@ const UpdatePasswordComponent = () => {
       required
          value={oldPassword}
          onChange={(e) => setOldPassword(e.target.value)}
-         className=' outline-none h-12 rounded px-4'
+         className='max-800px:w-[70%] max-800px:m-auto outline-none h-12 rounded px-4'
       />
        {visible1 ? (
       <AiOutlineEye size={22} className=" absolute top-9 right-8 cursor-pointer" onClick={() => setVisible1(false)} />
@@ -60,7 +60,7 @@ const UpdatePasswordComponent = () => {
     )}
       </div>
       <div className=' w-full flex flex-col relative'>
-      <label htmlFor="newPassword" >New Password</label>
+      <label htmlFor="newPassword" className=' max-800px:text-center' >New Password</label>
        <input type={visible2 ? "text" : "password"} 
       placeholder='New Password..'
       id='newPassword'
@@ -68,7 +68,7 @@ const UpdatePasswordComponent = () => {
       required
          value={newPassword}
          onChange={(e) => setNewPassword(e.target.value)}
-         className=' outline-none h-12 rounded px-4'
+         className='max-800px:w-[70%] max-800px:m-auto outline-none h-12 rounded px-4'
       />
        {visible2 ? (
       <AiOutlineEye size={22} className=" absolute top-9 right-8 cursor-pointer" onClick={() => setVisible2(false)} />
@@ -77,7 +77,7 @@ const UpdatePasswordComponent = () => {
     )}
       </div>
       <div className=' w-full flex flex-col relative'>
-      <label htmlFor="confirmPassword" >Confirm Password</label>
+      <label htmlFor="confirmPassword" className=' max-800px:text-center' >Confirm Password</label>
        <input type={visible3 ? "text" : "password"} 
       placeholder='Confirm Password..'
       id='confirmPassword'
@@ -85,7 +85,7 @@ const UpdatePasswordComponent = () => {
       required
          value={confirmPassword}
          onChange={(e) => setConfirmPassword(e.target.value)}
-         className=' outline-none h-12 rounded px-4'
+         className='max-800px:w-[70%] max-800px:m-auto outline-none h-12 rounded px-4'
       />
        {visible3 ? (
       <AiOutlineEye size={22} className=" absolute top-9 right-8 cursor-pointer" onClick={() => setVisible3(false)} />
@@ -94,7 +94,7 @@ const UpdatePasswordComponent = () => {
     )}
       </div>
      
-      <button type="submit" disabled={loading} className=' w-full border border-black h-[34px] 800px:mt-10 bg-[#ebebeb] active:bg-[#727272]'>Update</button>
+      <button type="submit" disabled={loading} className=' w-full border border-black h-[34px] 800px:mt-10 max-800px:w-[70%] m-auto bg-[#ebebeb] active:bg-[#727272]'>Update</button>
      
   </form>
 </div>

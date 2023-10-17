@@ -73,7 +73,7 @@ const UpdateProfileComponent = () => {
              </div>
              <div className=' flex flex-row gap-[80px] w-full max-800px:flex-col max-800px:gap-0'>
            <div className=' w-full flex flex-col'>
-             <label htmlFor="name" >Full name</label>
+             <label htmlFor="name" className=' max-800px:text-center' >Full name</label>
              <input type="text" 
             placeholder='Name..'
             id='name'
@@ -81,31 +81,31 @@ const UpdateProfileComponent = () => {
             required
                value={name}
                onChange={(e) => setName(e.target.value)}
-               className=' outline-none h-10 rounded px-4'
+               className=' max-800px:w-[60%] max-800px:m-auto outline-none h-10 rounded px-4'
             />
            </div>
            <div className=' w-full flex flex-col'>
-               <label htmlFor="address">Address</label>
+               <label htmlFor="address" className=' max-800px:text-center'>Address</label>
              <input type="text" 
             placeholder='Address..'
             id='address'
             name='address'
                value={address}
                onChange={(e) => setAddress(e.target.value)}
-               className=' outline-none h-10 rounded px-4 '
+               className='max-800px:w-[60%] max-800px:m-auto outline-none h-10 rounded px-4 '
             />
             </div>
             </div>
             <div className=' flex flex-row gap-[80px] w-full max-800px:flex-col max-800px:gap-0'>
             <div className=' w-full flex flex-col relative'>
-            <label htmlFor="password" >Password</label>
+            <label htmlFor="password" className=' max-800px:text-center'>Password</label>
              <input type={visible ? "text" : "password"} 
             placeholder='Password..'
             id='password'
             name='password'
                value={password}
                onChange={(e) => setPassword(e.target.value)}
-               className=' outline-none h-10 rounded px-4'
+               className='max-800px:w-[70%] max-800px:m-auto outline-none h-10 rounded px-4'
             />
              {visible ? (
             <AiOutlineEye size={22} className=" absolute top-8 right-8 cursor-pointer" onClick={() => setVisible(false)} />
@@ -114,19 +114,19 @@ const UpdateProfileComponent = () => {
           )}
             </div>
             <div className='w-full flex flex-col'>
-               <label htmlFor="number">Phone Number</label>
+               <label htmlFor="number" className=' max-800px:text-center'>Phone Number</label>
             <input type="text" 
             placeholder='Phone Number..'
             id="number"
             name='phone'
                value={phone}
                onChange={(e) => setPhone(e.target.value)}
-               className='  outline-none h-10 rounded px-4 '
+               className=' max-800px:w-[60%] max-800px:m-auto outline-none h-10 rounded px-4 '
             />
             </div>
             </div>
            
-            <button type="submit" disabled={loading} className=' w-full border border-black h-[34px] 800px:mt-10 bg-[#ebebeb] active:bg-[#727272]'>Update</button>
+            <button type="submit" disabled={loading} className=' w-full border border-black h-[34px] 800px:mt-10 bg-[#ebebeb] max-800px:w-[60%] active:bg-[#727272]'>Update</button>
            
         </form>
     </div>
